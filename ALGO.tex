@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{book}
+
+\usepackage{dsalgo}
+\title{\Huge \textbf{Algoritmizace}\\[0.5cm] \Large Cvičení}
+\author{}
+\date{2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Posloupnosti}
+\begin{definition}
+\emph{Posloupnost} je zobrazení z množiny přirozených čísel do libovolné množiny.
+Zápis: $(a_n)$ -- posloupnost, $a_n$ -- n-tý prvek.
+\end{definition}
+
+\section{Způsoby zadávání posloupností} 
+	\subsection{Prvních x členů}
+		Musí být jasné pravidlo, jak vyjádřit další členy posloupnosti.
+		\begin{example}
+			\begin{itemize}
+				\item triviální příklad $1, 2, 3, 4 ... $
+				\item fibbonacci $0, 1, 1, 2, 3, 5, 8 ...$
+				\item alternující $1, -1, 1, -1 ...$
+				\item konečná $2, 4, 6, ..., 20$
+			\end{itemize}
+		\end{example}
+	\subsection{Vzorec pro n-tý člen}
+		Vyjádříme obecný vzorec pro n-tý prvek na základě indexu.
+		\begin{example}
+			\begin{itemize}
+				\item $(\frac{n}{n+1})$
+				\item $((-1)^nn)$
+				\item $ (1 + \frac{1}{n})^n)$
+			\end{itemize}
+		\end{example}
+	
+	\subsection{Rekurentně} 
+		Rekurentní zadání obsahuje zpravidla 1. člen (nebo několik prvních členů) a pravidlo, jak vytvořit další člen ze členů předcházejících.
+		\begin{example}
+			\begin{itemize}
+				\item $(\frac{n}{n+1})$
+				\item $((-1)^nn)$
+				\item $ (1 + \frac{1}{n})^n)$
+			\end{itemize}
+		\end{example}
+Speciálním případem rekurentního zadání jsou aritmetická a geometrická posloupnost.
+
+\begin{definition}
+	\emph{aritmetická posloupnost} je zadána $a_1 = a$ a $a_{n+1} = a_n + d$.
+	Podobně \emph{geometrická posloupnost} je definována $a_1 = a$ a $a_{n + 1} = a_n \cdot q$
+\end{definition}
+		
+\section{Úkoly}
+\begin{enumerate}
+	\item Určete vzorec pro n-tý člen následujících posloupností:
+		\begin{itemize}
+			\item $ 3, 7, 11, 15, 19 ...$
+			\item $ 2, 6, 18, 54, 162, 486 ...$
+			\item $ 2, 6, 12,20, 30 ... $
+			\item $ 1, -2, 3, -4, 5, -6 ...$
+			\item $
+\frac{1}{1 \cdot 4}, \quad \frac{3}{4 \cdot 7}, \quad \frac{5}{7 \cdot 10}, \quad \frac{7}{10 \cdot 13}, \quad \dots$
+		\end{itemize}
+	\item Vypočítejte prvních 5 prvků posloupností daných vzorcem:
+		\begin{itemize}
+			 \item $ a_n = 5 + 3(n - 1)$
+			 \item $ a_n = 2 \cdot 4^{n - 1}$
+			 \item $ a_n = n^2 + 2n + 1$
+			 \item $ a_n = (-2)^n \cdot n$
+			 \item $a_n = \frac{n^2 + n}{2}$
+		\end{itemize}
+\end{enumerate}
+
+
+	
+	
+\chapter{Vlastnosti posloupností}
+
+\chapter{Elementární funkce}
+
+\chapter{Pseudokód}
+
+\chapter{O-notace}
+
+\chapter{Třídění}
+
+
+\end{document}

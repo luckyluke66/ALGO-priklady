@@ -1,0 +1,113 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dsalgo}[2025/08/30 Custom style]
+
+% -------------------------------
+% Fonts & Typography
+% -------------------------------
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{microtype}
+\RequirePackage{newpxtext,newpxmath} 
+
+% -------------------------------
+% Page Layout
+% -------------------------------
+\RequirePackage{geometry}
+\geometry{margin=1in}
+
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+% -------------------------------
+% Color Palette
+% -------------------------------
+\RequirePackage[dvipsnames]{xcolor}
+\definecolor{softblue}{RGB}{222, 235, 247}
+\definecolor{softblueframe}{RGB}{158, 188, 218}
+
+\definecolor{softgreen}{RGB}{226, 240, 217}
+\definecolor{softgreenframe}{RGB}{168, 214, 167}
+
+\definecolor{softorange}{RGB}{250, 235, 215}
+\definecolor{softorangeframe}{RGB}{232, 190, 123}
+
+% -------------------------------
+% Boxes
+% -------------------------------
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+
+\newtcolorbox{definition}[1][]{
+  colback=softblue,
+  colframe=softblueframe,
+  title=\textbf{Definice},
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc=3mm,
+  boxrule=0.5pt,
+  #1
+}
+
+\newtcolorbox{theorem}[1][]{
+  colback=softgreen,
+  colframe=softgreenframe,
+  title=\textbf{Věta},
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc=3mm,
+  boxrule=0.5pt,
+  #1
+}
+
+\newtcolorbox{exercise}[1][]{
+  colback=softorange,
+  colframe=softorangeframe,
+  title=\textbf{Úkol},
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc=3mm,
+  boxrule=0.5pt,
+  #1
+}
+
+\newtcolorbox{example}[1][]{
+  colback=softorange,
+  colframe=softorangeframe,
+  title=\textbf{Příklad},
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc=3mm,
+  boxrule=0.5pt,
+  #1
+}
+
+% -------------------------------
+% Code Listings 
+% -------------------------------
+\RequirePackage{listings}
+
+% -------------------------------
+% Hyperlinks
+% -------------------------------
+\RequirePackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black
+}
+
+% --------------------------------
+% Czech language
+% --------------------------------
+
+\usepackage[czech]{babel}
+\renewcommand{\chaptername}{Kapitola}
+\renewcommand{\contentsname}{Obsah}
+
+
