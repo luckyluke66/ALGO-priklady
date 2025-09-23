@@ -49,7 +49,7 @@ f(x) = ax + b, \quad a \neq 0.
     grid=both, grid style={dashed,gray!30},
     samples=100, domain=-3:3
   ]
-    \addplot[blue, thick] {2*x - 1};
+    \addplot[softorangeframe, thick] {2*x - 1};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -68,9 +68,10 @@ f(x) = ax^2 + bx + c, \quad a \neq 0.
 \textbf{Vlastnosti:}
 \begin{itemize}
   \item Definiční obor: $\mathbb{R}$
-  \item Obor hodnot: podle znaménka $a$
-  \item Parabola – osa souměrnosti $x = -\tfrac{b}{2a}$
-  \item Extrém: minimum pro $a>0$, maximum pro $a<0$
+  \item Obor hodnot: $[0, + \infty )$
+  \item Na intervalu $(- \infty, 0]$ klesající a na $[0, +\infty)$ je rostoucí
+rostoucí.
+  \item Zdola omezená
 \end{itemize}
 
 \begin{center}
@@ -80,14 +81,14 @@ f(x) = ax^2 + bx + c, \quad a \neq 0.
     axis lines=middle,
     xlabel={$x$}, ylabel={$y$},
     grid=both, grid style={dashed,gray!30},
-    samples=100, domain=-2:4
+    samples=100
   ]
-    \addplot[red, thick] {x^2 - 2*x - 3};
+    \addplot[softorangeframe, thick] {x^2};
   \end{axis}
 \end{tikzpicture}
 \end{center}
 
-obecně můžeme uvažovat polynomy
+Obecně můžeme uvažovat polynomy. Kvadratická i lineární jsou případy polynomické funkce. 
 
 % ---------- Goniometrická funkce ----------
 \subsection*{Goniometrické funkce}
@@ -96,7 +97,7 @@ Základní goniometrická funkce jsou sinus:
 \[
 f(x) = \sin x.
 \]
-a cosinus
+a cosinus:
 
 \[
 f(x) = \cos x.
@@ -125,7 +126,7 @@ f(x) = \cos x.
     xticklabels={$-2\pi$,$-\pi$,0,$\pi$,$2\pi$},
     ymin=-1.5, ymax=1.5
   ]
-    \addplot[green!60!black, thick] {sin(deg(x))};
+    \addplot[softorangeframe, thick] {sin(deg(x)};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -143,8 +144,7 @@ f(x) = a^x, \quad a > 0, \; a \neq 1.
 \begin{itemize}
   \item Definiční obor: $\mathbb{R}$
   \item Obor hodnot: $(0, \infty)$
-  \item Rostoucí pro $a>1$, klesající pro $0<a<1$
-  \item Asymptota: osa $x$-ová
+  \item Monotónnost: rostoucí pro $a>1$, klesající pro $0<a<1$
 \end{itemize}
 
 \begin{center}
@@ -154,10 +154,10 @@ f(x) = a^x, \quad a > 0, \; a \neq 1.
     axis lines=middle,
     xlabel={$x$}, ylabel={$y$},
     grid=both, grid style={dashed,gray!30},
-    samples=100, domain=-2:2,
-    ymin=0, ymax=8
+    samples=100, domain= -1:6,
+    ymin=0, ymax=20
   ]
-    \addplot[purple, thick] {2^x};
+    \addplot[softorangeframe, thick] {e^x};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -178,7 +178,8 @@ Platí, že: $a^y = x$ p.k. $\log_a(x) = y$
 \begin{itemize}
   \item Definiční Obor: $(0, \infty)$
   \item Obor hodnot: $\mathbb{R}$
-  \item Rostoucí, nemá extrémy
+  \item Monotónnost: Rostoucí
+  \item Nemá extrémy
 \end{itemize}
 
 \begin{center}
@@ -191,7 +192,7 @@ Platí, že: $a^y = x$ p.k. $\log_a(x) = y$
     domain=0.1:5, samples=100,
     ymin=-3, ymax=3
   ]
-    \addplot[orange, thick] {ln(x)};
+    \addplot[softorangeframe, thick] {ln(x)};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -207,9 +208,9 @@ n! = 1 \cdot 2 \cdot 3 \cdot \dots \cdot n, \quad 0! = 1.
 
 \textbf{Vlastnosti:}
 \begin{itemize}
-  \item definiční Obor: $\mathbb{N}_0$
+  \item Definiční Obor: $\mathbb{N}_0$
   \item Obor hodnot: $\mathbb{N}$
-  \item rostoucí posloupnost
+  \item Monotónnost: Rostoucí posloupnost
   \item Není omezený, nemá extrémy
 \end{itemize}
 
@@ -223,7 +224,7 @@ n! = 1 \cdot 2 \cdot 3 \cdot \dots \cdot n, \quad 0! = 1.
     xtick={0,1,2,3,4,5,6},
     ymin=0, ymax=800
   ]
-    \addplot[ycomb, mark=*, mark size=2pt, blue, thick] coordinates {
+    \addplot[ycomb, mark=*, mark size=2pt, softblueframe, thick] coordinates {
       (0,1) (1,1) (2,2) (3,6) (4,24) (5,120) (6,720)
     };
   \end{axis}
@@ -237,7 +238,7 @@ n! = 1 \cdot 2 \cdot 3 \cdot \dots \cdot n, \quad 0! = 1.
 Zápis: $(a_n)$ -- posloupnost, $a_n$ -- n-tý prvek.
 \end{definition}
 
-Často za množinu $A$ budeme dosazovat $\mathbb{R}$, takovým posloupnostem se říká \emph{číselné posloupnosti} Ty budou důležité pro tuto kapitolu. O posloupnosti $(a_n):\mathbb{N} \rightarrow A$ můžeme uvažovat tak, že každému prvku z $A$ lze přiřadit index.
+Často za množinu $A$ budeme dosazovat $\mathbb{R}$, takovým posloupnostem se říká \emph{číselné posloupnosti}. Ty budou důležité pro tuto kapitolu. O posloupnosti $(a_n):\mathbb{N} \rightarrow A$ můžeme uvažovat tak, že každému prvku z $A$ lze přiřadit index.
 
 \section{Způsoby zadávání posloupností} 
 	\subsection{Prvních x členů}
@@ -272,8 +273,49 @@ Zápis: $(a_n)$ -- posloupnost, $a_n$ -- n-tý prvek.
 Speciálním případem rekurentního zadání jsou aritmetická a geometrická posloupnost.
 
 \begin{definition}
-	\emph{aritmetická posloupnost} je zadána $a_1 = a$ a $a_{n+1} = a_n + d$.
-	Podobně \emph{geometrická posloupnost} je definována $a_1 = a$ a $a_{n + 1} = a_n \cdot q$
+	Posloupnost $(a_n)$ se nazývá \textbf{aritmetická} právě tehdy, když
+	\[
+	\exists d \in \mathbb{R} \ \forall n \in \mathbb{N} \quad a_{n+1} = a_n + d
+	\]
+	Číslo $d$ se nazývá \textbf{diference} aritmetické posloupnosti.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+
+    % Axes
+    \draw[->] (0,0) -- (7,0) node[right] {$n$};
+    \draw[->] (0,-4) -- (0,3) node[above] {$a_n$};
+
+    % x-axis numbers
+    \foreach \x in {0,1,2,3,4,5,6} {
+        \draw (\x,0.1) -- (\x,-0.1) node[below] {\x};
+    }
+
+    % y-axis numbers
+    \foreach \y in {-3,-2,-1,0,1,2} {
+        \draw (0.1,\y) -- (-0.1,\y) node[left] {\y};
+    }
+
+    % Points
+    \foreach \x/\y in {1/-3, 2/-2, 3/-1, 4/0, 5/1, 6/2} {
+        \fill (\x,\y) circle (2pt);
+    }
+
+    % Arrows for difference d
+    \foreach \x/\y in {1/-3, 2/-2, 3/-1, 4/0, 5/1} {
+        \draw[->, softblueframe] (\x,\y) -- (\x,\y+1) node[midway, right] {$d$};
+    }
+
+\end{tikzpicture}
+\end{center}
+
+\begin{definition}
+	Posloupnost $(a_n)$ se nazývá \textbf{geometrická} právě tehdy, když
+	\[
+	\exists q \in \mathbb{R} \ \forall n \in \mathbb{N} \quad a_{n+1} = a_n \cdot q
+	\]
+	Číslo $q$ se nazývá \textbf{kvocient} aritmetické posloupnosti.
 \end{definition}
 		
 \section{Vlastnosti posloupností}
@@ -378,45 +420,63 @@ Základní způsoby popisu takových algoritmů jsou:
 
 Pseudokód se používá pro vyjádření algoritmů nezávisle na konkrétním programovacím jazyce. Níže jsou základní prvky, které se běžně používají.
 
-\begin{itemize}
-  \item \textbf{Přiřazení:} \quad $x \gets y$
-  
-  \item \textbf{Podmínka:}
-  \begin{algorithmic}
-    \If{podmínka}
-      \State příkazy
-    \Else
-      \State příkazy
-    \EndIf
-  \end{algorithmic}
+\begin{pseudocodecard}{Přiřazení}
+\[
+x \gets y
+\]
+\end{pseudocodecard}
 
-  \item \textbf{Cyklus \texttt{for}:}
-  \begin{algorithmic}
-    \For{$i \gets 1 \ \textbf{to} \ n$}
-      \State příkazy
-    \EndFor
-  \end{algorithmic}
+\begin{pseudocodecard}{Podmínka}
+\begin{algorithmic}[1]
+  \If{podmínka}
+    \State příkazy
+  \Else
+    \State příkazy
+  \EndIf
+\end{algorithmic}
+\end{pseudocodecard}
 
-  \item \textbf{Cyklus \texttt{while}:}
-  \begin{algorithmic}
-    \While{podmínka}
-      \State příkazy
-    \EndWhile
-  \end{algorithmic}
+\begin{pseudocodecard}{Cyklus \texttt{for}}
+\begin{algorithmic}[1]
+  \For{$i \gets 1 \textbf{ to } n$}
+    \State příkazy
+  \EndFor
+\end{algorithmic}
+\end{pseudocodecard}
 
-  \item \textbf{Cyklus \texttt{repeat-until}:}
-  \begin{algorithmic}
-    \Repeat
-      \State příkazy
-    \Until{podmínka}
-  \end{algorithmic}
+\begin{pseudocodecard}{Cyklus \texttt{while}}
+\begin{algorithmic}[1]
+  \While{podmínka}
+    \State příkazy
+  \EndWhile
+\end{algorithmic}
+\end{pseudocodecard}
 
-  \item \textbf{Volání funkce:} \quad $j \gets \textsc{ABOLISH}(capitalism, now)$
-  
-  \item \textbf{Návratová hodnota:} \quad \Return hodnota
-  
-  \item \textbf{Přístup k poli:} \quad $A[i]$
-\end{itemize}
+\begin{pseudocodecard}{Cyklus \texttt{repeat-until}}
+\begin{algorithmic}[1]
+  \Repeat
+    \State příkazy
+  \Until{podmínka}
+\end{algorithmic}
+\end{pseudocodecard}
+
+\begin{pseudocodecard}{Volání funkce}
+\[
+j \gets \textsc{ABOLISH}(capitalism, now)
+\]
+\end{pseudocodecard}
+
+\begin{pseudocodecard}{Návratová hodnota}
+\[
+\Return \text{hodnota}
+\]
+\end{pseudocodecard}
+
+\begin{pseudocodecard}{Přístup k poli}
+\[
+A[i]
+\]
+\end{pseudocodecard}
 
 \newpage 
 \section{Ukázkový algoritmus: Lineární vyhledávání}

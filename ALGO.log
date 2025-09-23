@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  23 SEP 2025 17:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.5.31)  23 SEP 2025 20:07
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1293,53 +1293,63 @@ LaTeX Font Info:    Font shape `TS1/zpltlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 37.
  [5{c:/texlive/2024/texmf-dist/fonts/enc/dvips/newpx/px-lms.enc}{c:/texlive/202
 4/texmf-dist/fonts/enc/dvips/newtx/ntx-ot1-tlf.enc}{c:/texlive/2024/texmf-dist/
-fonts/enc/dvips/newpx/zpl_TOsF.enc}] [6] [7] [8]
+fonts/enc/dvips/newpx/zpl_TOsF.enc}]
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+[6] [7] [8]
 Kapitola 2.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 236.
+(Font)              scaled to size 12.0pt on input line 237.
 LaTeX Font Info:    Font shape `T1/zpltlf/b/n' will be
-(Font)              scaled to size 17.28pt on input line 242.
+(Font)              scaled to size 17.28pt on input line 243.
 [9
 
 ]
+Underfull \vbox (badness 1867) has occurred while \output is active []
+
+ [10]
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 8.8pt on input line 293.
+(Font)              scaled to size 8.8pt on input line 335.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 6.6pt on input line 293.
- [10] [11] [12
+(Font)              scaled to size 6.6pt on input line 335.
+
+[11] [12]
+Kapitola 3.
+[13
 
 ]
-Kapitola 3.
-[13]
+LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
+(Font)              scaled to size 10.0pt on input line 431.
 LaTeX Font Info:    Trying to load font information for T1+npxtt on input line 
-393.
+439.
  (c:/texlive/2024/texmf-dist/tex/latex/newpx/t1npxtt.fd
 File: t1npxtt.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Font shape `T1/npxtt/b/n' in size <12> not available
-(Font)              Font shape `T1/npxtt/bx/n' tried instead on input line 393.
+(Font)              Font shape `T1/npxtt/bx/n' tried instead on input line 439.
 
 LaTeX Font Info:    Font shape `T1/npxtt/bx/n' will be
-(Font)              scaled to size 12.0pt on input line 393.
+(Font)              scaled to size 12.0pt on input line 439.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `npxtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/zpltlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 414.
+(Font)              scaled to size 12.0pt on input line 465.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/zpltlf/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
- [14{c:/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}]
+ [14{c:/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}] [15]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 427.
-LaTeX Font Info:    Font shape `T1/zpltlf/m/n' will be
-(Font)              scaled to size 10.0pt on input line 429.
- [15] [16
-
-]
+put line 487.
+ [16]
 Kapitola 4.
-[17] [18
+[17
+
+] [18
 
 ]
 Kapitola 5.
@@ -1348,24 +1358,17 @@ Kapitola 5.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
  ***********
-
-
-Package rerunfilecheck Warning: File `ALGO.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `ALGO.out':
-(rerunfilecheck)             Before: 4DEAA1CB4EC9F632466A6976C12A29BC;1802
-(rerunfilecheck)             After:  765250DE6688F7EB3A6667CF724A2EDE;2261.
+Package rerunfilecheck Info: File `ALGO.out' has not changed.
+(rerunfilecheck)             Checksum: 765250DE6688F7EB3A6667CF724A2EDE;2261.
  ) 
 Here is how much of TeX's memory you used:
- 43758 strings out of 473993
- 971630 string characters out of 5745069
- 1948907 words of memory out of 5000000
- 65402 multiletter control sequences out of 15000+600000
+ 43814 strings out of 473993
+ 972782 string characters out of 5745069
+ 1947907 words of memory out of 5000000
+ 65458 multiletter control sequences out of 15000+600000
  645438 words of font info for 178 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,11n,121p,1001b,2050s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,11n,121p,1001b,2051s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/newpx/NewPXMI.pfb><c:/texlive/
 2024/texmf-dist/fonts/type1/public/newpx/NewPXMI_gnu.pfb><c:/texlive/2024/texmf
 -dist/fonts/type1/public/newpx/pxmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/typ
@@ -1374,10 +1377,10 @@ s/t1xbtt.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><c:
 /texlive/2024/texmf-dist/fonts/type1/public/newpx/zplb.pfb><c:/texlive/2024/tex
 mf-dist/fonts/type1/public/newpx/zplr.pfb><c:/texlive/2024/texmf-dist/fonts/typ
 e1/public/newpx/zplri.pfb>
-Output written on ALGO.pdf (19 pages, 189271 bytes).
+Output written on ALGO.pdf (19 pages, 193591 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
+ 250 PDF objects out of 1000 (max. 8388607)
+ 205 compressed objects within 3 object streams
  46 named destinations out of 1000 (max. 500000)
- 51829 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 51845 words of extra memory for PDF output out of 61914 (max. 10000000)
 
