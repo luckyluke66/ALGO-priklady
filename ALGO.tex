@@ -1,6 +1,15 @@
 \documentclass[12pt,a4paper]{book}
 
 \usepackage{dsalgo}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
 \title{\Huge \textbf{Algoritmizace}\\[0.5cm] \Large Cvičení}
 \author{}
 \date{2025}
@@ -9,11 +18,226 @@
 \maketitle
 \tableofcontents
 
+
+
+
+\chapter{Elementární funkce}
+
+% ---------- Lineární funkce ----------
+\subsection*{Lineární funkce}
+\begin{definition}
+Lineární funkce má tvar
+\[
+f(x) = ax + b, \quad a \neq 0.
+\]
+\end{definition}
+
+\textbf{Vlastnosti:}
+\begin{itemize}
+  \item Definiční obor: $\mathbb{R}$
+  \item Obor hodnot: $\mathbb{R}$
+  \item Monotónnost: rostoucí pro $a>0$, klesající pro $a<0$
+  \item Nemá extrémy, není omezená
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=8cm, height=6cm,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$y$},
+    grid=both, grid style={dashed,gray!30},
+    samples=100, domain=-3:3
+  ]
+    \addplot[blue, thick] {2*x - 1};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ---------- Kvadratická funkce ----------
+\subsection*{Kvadratická funkce}
+\begin{definition}
+Kvadratická funkce má tvar
+\[
+f(x) = ax^2 + bx + c, \quad a \neq 0.
+\]
+\end{definition}
+
+\newpage
+
+\textbf{Vlastnosti:}
+\begin{itemize}
+  \item Definiční obor: $\mathbb{R}$
+  \item Obor hodnot: podle znaménka $a$
+  \item Parabola – osa souměrnosti $x = -\tfrac{b}{2a}$
+  \item Extrém: minimum pro $a>0$, maximum pro $a<0$
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=8cm, height=6cm,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$y$},
+    grid=both, grid style={dashed,gray!30},
+    samples=100, domain=-2:4
+  ]
+    \addplot[red, thick] {x^2 - 2*x - 3};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+obecně můžeme uvažovat polynomy
+
+% ---------- Goniometrická funkce ----------
+\subsection*{Goniometrické funkce}
+\begin{definition}
+Základní goniometrická funkce jsou sinus:
+\[
+f(x) = \sin x.
+\]
+a cosinus
+
+\[
+f(x) = \cos x.
+\]
+
+
+\end{definition}
+
+\textbf{Vlastnosti sinu:}
+\begin{itemize}
+  \item Definiční obor: $\mathbb{R}$
+  \item Obor hodnot: $\langle -1, 1 \rangle$
+  \item Periodická s periodou $2\pi$
+  \item Neklesající ani nerostoucí na celém oboru, ale monotónní po intervalech
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=8cm, height=6cm,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$y$},
+    grid=both, grid style={dashed,gray!30},
+    samples=200, domain=-2*pi:2*pi,
+    xtick={-6.28,-3.14,0,3.14,6.28},
+    xticklabels={$-2\pi$,$-\pi$,0,$\pi$,$2\pi$},
+    ymin=-1.5, ymax=1.5
+  ]
+    \addplot[green!60!black, thick] {sin(deg(x))};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ---------- Exponenciální funkce ----------
+\subsection*{Exponenciální funkce}
+\begin{definition}
+Exponenciální funkce je dána předpisem
+\[
+f(x) = a^x, \quad a > 0, \; a \neq 1.
+\]
+\end{definition}
+
+\textbf{Vlastnosti:}
+\begin{itemize}
+  \item Definiční obor: $\mathbb{R}$
+  \item Obor hodnot: $(0, \infty)$
+  \item Rostoucí pro $a>1$, klesající pro $0<a<1$
+  \item Asymptota: osa $x$-ová
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=8cm, height=6cm,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$y$},
+    grid=both, grid style={dashed,gray!30},
+    samples=100, domain=-2:2,
+    ymin=0, ymax=8
+  ]
+    \addplot[purple, thick] {2^x};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Logaritmická funkce}
+\begin{definition}
+Logaritmická funkce je inverzní k exponenciální funkci:
+\[
+f(x) = \log_a(x), \quad a > 0, \; a \neq 1.
+\]
+
+Platí, že: $a^y = x$ p.k. $\log_a(x) = y$
+
+
+\end{definition}
+
+\textbf{Vlastnosti:}
+\begin{itemize}
+  \item Definiční Obor: $(0, \infty)$
+  \item Obor hodnot: $\mathbb{R}$
+  \item Rostoucí, nemá extrémy
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=8cm, height=6cm,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$y$},
+    grid=both, grid style={dashed,gray!30},
+    domain=0.1:5, samples=100,
+    ymin=-3, ymax=3
+  ]
+    \addplot[orange, thick] {ln(x)};
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+% ---------- Faktoriál ----------
+\subsection*{Faktoriál}
+\begin{definition}
+Faktoriál je definován pro $n \in \mathbb{N}_0$ předpisem
+\[
+n! = 1 \cdot 2 \cdot 3 \cdot \dots \cdot n, \quad 0! = 1.
+\]
+\end{definition}
+
+\textbf{Vlastnosti:}
+\begin{itemize}
+  \item definiční Obor: $\mathbb{N}_0$
+  \item Obor hodnot: $\mathbb{N}$
+  \item rostoucí posloupnost
+  \item Není omezený, nemá extrémy
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    width=8cm, height=6cm,
+    axis lines=middle,
+    xlabel={$n$}, ylabel={$n!$},
+    grid=both, grid style={dashed,gray!30},
+    xtick={0,1,2,3,4,5,6},
+    ymin=0, ymax=800
+  ]
+    \addplot[ycomb, mark=*, mark size=2pt, blue, thick] coordinates {
+      (0,1) (1,1) (2,2) (3,6) (4,24) (5,120) (6,720)
+    };
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+
 \chapter{Posloupnosti}
 \begin{definition}
 \emph{Posloupnost} je zobrazení z množiny přirozených čísel do libovolné množiny.
 Zápis: $(a_n)$ -- posloupnost, $a_n$ -- n-tý prvek.
 \end{definition}
+
+Často za množinu $A$ budeme dosazovat $\mathbb{R}$, takovým posloupnostem se říká \emph{číselné posloupnosti} Ty budou důležité pro tuto kapitolu. O posloupnosti $(a_n):\mathbb{N} \rightarrow A$ můžeme uvažovat tak, že každému prvku z $A$ lze přiřadit index.
 
 \section{Způsoby zadávání posloupností} 
 	\subsection{Prvních x členů}
@@ -52,6 +276,36 @@ Speciálním případem rekurentního zadání jsou aritmetická a geometrická 
 	Podobně \emph{geometrická posloupnost} je definována $a_1 = a$ a $a_{n + 1} = a_n \cdot q$
 \end{definition}
 		
+\section{Vlastnosti posloupností}
+\begin{definition}
+Posloupnost $(a_n)$ nazveme
+\begin{itemize}
+  \item \emph{rostoucí}, jestliže $a_{n+1} > a_n$ pro všechna $n \in \mathbb{N}$,
+  \item \emph{nerostoucí}, jestliže $a_{n+1} \leq a_n$ pro všechna $n \in \mathbb{N}$,
+  \item \emph{klesající}, jestliže $a_{n+1} < a_n$ pro všechna $n \in \mathbb{N}$,
+  \item \emph{neklesající}, jestliže $a_{n+1} \geq a_n$ pro všechna $n \in \mathbb{N}$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Posloupnost $\{a_n\}$ je \emph{omezená}, jestliže existuje reálné číslo $M > 0$ tak, že
+\[
+  |a_n| \leq M \quad \text{pro všechna } n \in \mathbb{N}.
+\]
+Ekvivalentně, posloupnost je omezená shora, pokud $\exists K \in \mathbb{R}$ tak, že $a_n \leq K$ pro všechna $n$;  
+omezená zdola, pokud $\exists L \in \mathbb{R}$ tak, že $a_n \geq L$ pro všechna $n$.
+\end{definition}
+
+
+\begin{definition}
+Pro posloupnost $\{a_n\}$ definujeme:
+\begin{itemize}
+  \item \emph{maximum} $\max\{a_n\}$, pokud existuje člen $a_k$, pro který platí $a_k \geq a_n$ pro všechna $n$,
+  \item \emph{minimum} $\min\{a_n\}$, pokud existuje člen $a_k$, pro který platí $a_k \leq a_n$ pro všechna $n$.
+\end{itemize}
+\end{definition}
+
+
 \section{Úkoly}
 \begin{enumerate}
 	\item Určete vzorec pro n-tý člen následujících posloupností:
@@ -73,14 +327,135 @@ Speciálním případem rekurentního zadání jsou aritmetická a geometrická 
 		\end{itemize}
 \end{enumerate}
 
-
-	
-	
-\chapter{Vlastnosti posloupností}
-
-\chapter{Elementární funkce}
-
 \chapter{Pseudokód}
+Ze slidu Prof. Bělohlávka:
+
+\section{Náznak definice}
+\begin{definition}
+První přiblížení („definice“):
+Algoritmus je posloupnost instrukcí pro řešení problému.
+
+Tato „definice“ je však nepřesná (tedy vlastně ani nejde o přesnou definici):
+\begin{itemize}
+	\item Co je to problém?
+	\item Co je to instrukce?
+	\item Co znamená „řešit problém“?
+\end{itemize}
+
+Názorně ale vystihuje podstatu pojmu algoritmus.
+\end{definition}
+
+Budeme se zabývat zejména algoritmy, které jsou určeny pro počítač (tj. instrukce vykonává počítač).  
+Základní způsoby popisu takových algoritmů jsou:
+
+\begin{itemize}
+  \item \textbf{Přirozeným jazykem.} (popis receptu).
+  \begin{itemize}
+    \item[\textbf{+}] Snadno srozumitelné i laikům.
+    \item[\textbf{--}] Může být nejednoznačné, zdlouhavé.
+  \end{itemize}
+
+  \item \textbf{Programovacím jazykem.} Budeme používat jazyk Python (ale je možné použít jakýkoli programovací jazyk).
+  \begin{itemize}
+    \item[\textbf{+}] Jednoznačné.
+    \item[\textbf{+}] Vytvořit počítačový program je pak snadné (téměř ho už máme). Rozumí tomu programátoři.
+    \item[\textbf{--}] Obsahuje i zbytečné (nepodstatné) detaily. Dlouhé.
+  \end{itemize}
+  
+  \item \textbf{Pseudokódem.} Pseudokód je jazyk blízký programovacímu jazyku, ale je úspornější, protože neobsahuje tolik podrobností. Budeme používat pseudokód z knihy \emph{Cormen et al.: Introduction to Algorithms, 2nd Ed., MIT Press, 2001}.
+  \begin{itemize}
+    \item[\textbf{+}] Je snadno pochopitelný i pro ty, kteří nemají zkušenosti s programováním a programovacími jazyky.  
+    Je vytvořený přímo pro srozumitelný a úsporný popis algoritmů.  
+    Umožňuje snadný přepis do programovacích jazyků.
+    \item[\textbf{--}] Snad jen to, že při implementaci algoritmu je třeba ho přepsat do programovacího jazyka.
+
+  \item \textbf{Dalšími (polo)formálními prostředky.}  
+  Například vývojové diagramy apod.
+\end{itemize}
+\end{itemize}
+
+\section{Základní prvky pseudokódu (podle Cormen et al.)}
+
+Pseudokód se používá pro vyjádření algoritmů nezávisle na konkrétním programovacím jazyce. Níže jsou základní prvky, které se běžně používají.
+
+\begin{itemize}
+  \item \textbf{Přiřazení:} \quad $x \gets y$
+  
+  \item \textbf{Podmínka:}
+  \begin{algorithmic}
+    \If{podmínka}
+      \State příkazy
+    \Else
+      \State příkazy
+    \EndIf
+  \end{algorithmic}
+
+  \item \textbf{Cyklus \texttt{for}:}
+  \begin{algorithmic}
+    \For{$i \gets 1 \ \textbf{to} \ n$}
+      \State příkazy
+    \EndFor
+  \end{algorithmic}
+
+  \item \textbf{Cyklus \texttt{while}:}
+  \begin{algorithmic}
+    \While{podmínka}
+      \State příkazy
+    \EndWhile
+  \end{algorithmic}
+
+  \item \textbf{Cyklus \texttt{repeat-until}:}
+  \begin{algorithmic}
+    \Repeat
+      \State příkazy
+    \Until{podmínka}
+  \end{algorithmic}
+
+  \item \textbf{Volání funkce:} \quad $j \gets \textsc{ABOLISH}(capitalism, now)$
+  
+  \item \textbf{Návratová hodnota:} \quad \Return hodnota
+  
+  \item \textbf{Přístup k poli:} \quad $A[i]$
+\end{itemize}
+
+\newpage 
+\section{Ukázkový algoritmus: Lineární vyhledávání}
+
+Lineární vyhledávání prochází pole po jednotlivých prvcích a vrací index hledané hodnoty, pokud existuje.
+
+\begin{algorithm}
+\caption{LINEAR-SEARCH$(A,v)$}
+\begin{algorithmic}[1]
+  \For{$i \gets 1 \ \textbf{to} \ \text{length}[A]$}
+    \If{$A[i] = v$}
+      \State \Return $i$
+    \EndIf
+  \EndFor
+  \State \Return NIL
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Úkoly}
+\begin{enumerate}
+	\item Navrhněte v pseudokódu algoritmus který:
+		\begin{itemize}
+			\item IN: číslo $x$, OUT: jeho ciferný součet
+			\item IN: číslo $x$, OUT: součet jeho dělitelů
+			\item IN: číslo $x$, OUT: rozhodne jestli je prvočíslem nebo ne
+			\item IN: číslo $x$, OUT: počet jeho dělitelů
+			\item IN: pole čísel $A$, OUT: pole ve kterém jsou prvky v opačném pořadí
+			\item IN: pole čísel $A$, OUT: nejmenší a největší prvek v poli v jednom průchodu
+			\item IN: pole čísel $A$, OUT: součet všech prvků
+			\item IN: pole čísel $A$, OUT: počet čísel větších než je průměr pole
+			\item IN: pole čísel $A$, OUT: pole $A$ které neobsahuje duplicity
+			\item IN: pole čísel $A$, OUT: pole kde všechny 0 jsou posunuty na konec, jinak je pořadí ponecháno
+			\item IN: pole čísel $A$ a hledané číslo $x$, OUT: index prvního výskytu čísla $x$
+			\item IN: pole čísel $A$ a hledané číslo $x$, OUT: pole indexů, na kterých se nachází číslo $x$
+		\end{itemize}
+		
+\end{enumerate}
+
 
 \chapter{O-notace}
 
