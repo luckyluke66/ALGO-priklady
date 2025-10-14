@@ -9,6 +9,9 @@
 \pgfplotsset{compat=1.18}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
 
 \title{\Huge \textbf{Algoritmizace}\\[0.5cm] \Large Cvičení}
 \author{}
@@ -420,13 +423,13 @@ Základní způsoby popisu takových algoritmů jsou:
 
 Pseudokód se používá pro vyjádření algoritmů nezávisle na konkrétním programovacím jazyce. Níže jsou základní prvky, které se běžně používají.
 
-\begin{pseudocodecard}{Přiřazení}
+\begin{pseudocodecardblue}{Přiřazení}
 \[
 x \gets y
 \]
-\end{pseudocodecard}
+\end{pseudocodecardblue}
 
-\begin{pseudocodecard}{Podmínka}
+\begin{pseudocodecardorange}{Podmínka}
 \begin{algorithmic}[1]
   \If{podmínka}
     \State příkazy
@@ -434,67 +437,146 @@ x \gets y
     \State příkazy
   \EndIf
 \end{algorithmic}
-\end{pseudocodecard}
+\end{pseudocodecardorange}
 
-\begin{pseudocodecard}{Cyklus \texttt{for}}
+\begin{pseudocodecardblue}{Cyklus \texttt{for}}
 \begin{algorithmic}[1]
   \For{$i \gets 1 \textbf{ to } n$}
     \State příkazy
   \EndFor
 \end{algorithmic}
-\end{pseudocodecard}
+\end{pseudocodecardblue}
 
-\begin{pseudocodecard}{Cyklus \texttt{while}}
+\begin{pseudocodecardorange}{Cyklus \texttt{while}}
 \begin{algorithmic}[1]
   \While{podmínka}
     \State příkazy
   \EndWhile
 \end{algorithmic}
-\end{pseudocodecard}
+\end{pseudocodecardorange}
 
-\begin{pseudocodecard}{Cyklus \texttt{repeat-until}}
+\begin{pseudocodecardblue}{Cyklus \texttt{repeat-until}}
 \begin{algorithmic}[1]
   \Repeat
     \State příkazy
   \Until{podmínka}
 \end{algorithmic}
-\end{pseudocodecard}
+\end{pseudocodecardblue}
 
-\begin{pseudocodecard}{Volání funkce}
+\begin{pseudocodecardorange}{Volání funkce}
 \[
 j \gets \textsc{ABOLISH}(capitalism, now)
 \]
-\end{pseudocodecard}
+\end{pseudocodecardorange}
 
-\begin{pseudocodecard}{Návratová hodnota}
+\begin{pseudocodecardblue}{Návratová hodnota}
 \[
 \Return \text{hodnota}
 \]
-\end{pseudocodecard}
+\end{pseudocodecardblue}
 
-\begin{pseudocodecard}{Přístup k poli}
+\begin{pseudocodecardorange}{Přístup k poli}
 \[
 A[i]
 \]
-\end{pseudocodecard}
+\end{pseudocodecardorange}
+ 
+\section{Základní otázky o algoritmech}
 
-\newpage 
-\section{Ukázkový algoritmus: Lineární vyhledávání}
-
-Lineární vyhledávání prochází pole po jednotlivých prvcích a vrací index hledané hodnoty, pokud existuje.
+\subsection{správnost}
+Vrátí algoritmus správný výsledek pro daný vstup? Řeší tedy algoritmus nějaký problém? 
 
 \begin{algorithm}
-\caption{LINEAR-SEARCH$(A,v)$}
+\caption{Algoritmus pro nalezení maxima pole}
 \begin{algorithmic}[1]
-  \For{$i \gets 1 \ \textbf{to} \ \text{length}[A]$}
-    \If{$A[i] = v$}
-      \State \Return $i$
+\Require Pole $A$ délky $n$ obsahující celá čísla
+\Ensure Maximální prvek v poli
+\State $max \gets 0$
+\For{$i = 1$ to $n$}
+    \If{$A[i] > max$}
+        \State $max \gets A[i]$
     \EndIf
-  \EndFor
-  \State \Return NIL
+\EndFor
+\State \Return $max$
 \end{algorithmic}
 \end{algorithm}
 
+Co takový algoritmus? Je správný? 
+Pokud chceme ukázat, že algoritmus správný není stačí nám najít vstup pro který algoritmus nenajde správný výstup.Zkusme tedy pole [1, 2, 3] maximum by mělo být 3. Po krokování algoritmu zjistíme, že tomu tak je. 
+Co vstup [-1, -3, -5]? Algoritmus vrátí 0. Nula není největší prvek pole. Dokonce do něj vůbec nepatří.
+
+Musíme si dávat pozor. Často se správnost algoritmu dokazuje. 
+Ukažme snadný důkaz správnosti následujícího algoritmu.
+
+\begin{algorithm}
+\caption{Lineární vyhledávání}
+\begin{algorithmic}[1]
+\Require Pole $A$ délky $n$, hledaná hodnota $x$
+\Ensure Index prvku $x$ nebo NIL, pokud se nenachází
+\For{$i = 0$ to $n - 1$}
+    \If{$A[i] = x$}
+        \State \Return $i$
+    \EndIf
+\EndFor
+\State \Return NIL
+\end{algorithmic}
+\end{algorithm}
+
+\begin{proof}
+	Chceme dokázat, že: Algoritmus vrátí správný výsledek a také že vždy skončí.
+	Na začátku každé iterace s indexem i platí:
+	„Prvek x není mezi A[0..i]“
+	
+	Před začátkem cyklu jsme neprohledali žádný prvek. Tedy A[0..0] neobsahuje hledaný prvek $x$.
+	Teď ukažme, že to platí pro i-tou iteraci. 
+ 	
+ 	Pokud A[i] = x, algoritmus končí a vrátí $i$
+ 	
+ 	Pokud A[i] != x, tak platí, že po provedení iterace x není v A[0..i].
+ 	
+ 	For cyklus končí pokud i > n - 1. Tedy i náš algoritmus skončía vrátí NIL , což je správně protože nenašel $x$.
+\end{proof}
+
+\subsection{Složitost}
+
+\begin{itemize}
+	\item časová složitost
+	\item Paměťová složitost
+\end{itemize}
+
+\subsubsection{Časová složitost}
+
+Popisuje jak je algoritmus rychlý. Jak dlouho trvá výpočet od zahájení výpočtu do konce. 
+Popisuje tedy efektivitu algoritmu vzhledem k času jakožto zdroji.
+
+Ve skutečnosti nepůjde o rychlost vzhledem k času. 
+Půjde o závislost počtu vykonaných kroků na velikosti vstupu. 
+Přirozeně nás vede k funkci $T: \mathbb{N} \rightarrow \mathbb{N}$
+Ta velikosti vstupu přiřadí počet kroků provedených algoritmem. 
+
+Složitosti se budeme věnovat více v další kapitole. 
+
+
+
+\subsection{Optimalita}
+Je náš algoritmus nejlepší možný vzhledem ke složitosti? 
+Neexistuje lepší varianta? 
+
+Podívejme se na algoritmus, který hledá GCD -- nejmenší společný dělitel.
+\begin{algorithm}
+\caption{Největší společný dělitel}
+\begin{algorithmic}
+\Require celá čísla m, n
+\Ensure Největší společný dělitel čísel m, n
+\While{$m$ mod $t$ $\neq$ 0 or $n$ mod $t$ $\neq$ 0}
+	\State $t \gets t - 1$
+\EndWhile
+\State \Return t
+\end{algorithmic}
+\end{algorithm}
+
+Správnost je triviální. Co optimalita? Neexistuje lepší algoritmus? 
+Existuje, říká se mu Eukleidův algoritmus. 
 
 \section{Úkoly}
 \begin{enumerate}
@@ -516,6 +598,196 @@ Lineární vyhledávání prochází pole po jednotlivých prvcích a vrací ind
 		
 \end{enumerate}
 
+
+\chapter{Složitost}
+
+Analýza algoritmu - snažíme se odhadnout jak se algoritmus bude chovat. 
+Pokud mluvíme o složitosti jde nám o to kolik algoritmu zabere času než nám dá výsledek.
+Nebo můžeme uvažovat paměťovou složitost -- kolik paměti algoritmus bude potřebovat na výpočet.
+
+pokud budeme dále mluvit o složitosti algoritmu. Budeme tím myslet časovou, pokud nebude explicitně řečeno jinak. 
+
+\begin{definition}
+	\emph{Časová složitost algoritmu} $A$ je funkce $T_A: \mathbb{N} \rightarrow \mathbb{N}$
+	$T_A(n) =$ počet elementárních kroků, které $A$ vykoná pro vstup velikosti n.
+\end{definition}
+
+Funkce $T_A(n)$ popisuje jak se algoritmus chová pro všechny vstupy.
+Obvykle nás zajímá nejhorší případ, nebo průměrný případ.
+
+
+Nechť algoritmus $A$ řeší problém $P$ a nechť $I_1, I_2, \dots, I_m$ jsou všechny možné vstupy problému $P$ o velikosti $n$.  
+Označme $t_A(I_i)$ dobu běhu algoritmu $A$ na instanci $I_i$.
+
+\begin{definition}
+\textbf{Časová složitost v nejhorším případě} (worst-case time complexity) je definována jako maximální doba běhu algoritmu pro všechny možné instance o velikosti $n$:
+\[
+T_A^{\max}(n) = max\{t_A(I)|\text{I je vstup problému P a} |I| = n\}
+\]
+
+\[
+\qquad \text{tj. graficky:} \qquad
+\left.
+\begin{array}{c|c}
+I_1 & t_A(I_1) \\
+I_2 & t_A(I_2) \\
+\vdots & \vdots \\
+I_m & t_A(I_m)
+\end{array}
+\right\}
+\text{max.}
+\]
+\end{definition}
+\newpage
+\begin{definition}
+\textbf{Časová složitost v průměrném případě} (average-case time complexity) je definována jako průměrná doba běhu algoritmu:
+\[
+T_A^{\text{avg}}(n) = \frac{t_A(I_1) + \dots + t_A(I_m)}{m}
+\qquad \text{tj. graficky:} \qquad
+\left.
+\begin{array}{c|c}
+I_1 & t_A(I_1) \\
+I_2 & t_A(I_2) \\
+\vdots & \vdots \\
+I_m & t_A(I_m)
+\end{array}
+\right\}
+\mathbb{E}
+\]
+kde $p_i$ je pravděpodobnost výskytu instance $I_i$.
+\end{definition}
+
+
+\begin{table}[h!]
+\centering
+\rowcolors{2}{gray!10}{white}
+\setlength{\arrayrulewidth}{0.3mm}
+\arrayrulecolor{gray!70}
+\begin{tabular}{lll}
+\rowcolor{softblue}
+\multicolumn{3}{l}{\textbf{Přehled běžných typů složitostí}} \\[3pt]
+\toprule
+\textbf{Typ růstu} & \textbf{Příklad funkce} & \textbf{Typické algoritmy / operace} \\
+\midrule
+konstantní & $c$ & přístup k prvku v poli \\
+logaritmická & $\log n$ & binární vyhledávání \\
+lineární & $n$ & prohledání pole, výpočet minima \\
+lineárně–logaritmická & $n \log n$ & efektivní třídění (MergeSort, QuickSort) \\
+kvadratická & $n^2$ & naivní třídění (BubbleSort, InsertionSort) \\
+kubická & $n^3$ & naivní násobení matic \\
+exponenciální & $2^n$ & úplné prohledávání stavového prostoru \\
+faktoriál & $n!$ & procházení všech permutací \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+\section{Úkoly}
+\begin{enumerate}
+	\item U následujících algoritmů určete časovou složitost
+\end{enumerate}
+
+\begin{algorithm}[H]
+\caption{Faktoriál čísla $n$}
+\begin{algorithmic}
+\Function{Faktoriál}{$n$}
+    \If{$n = 0$}
+        \State \Return $1$
+    \Else
+        \State \Return $n \times$ \Call{Faktoriál}{$n - 1$}
+    \EndIf
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Eukleidův algoritmus}
+\begin{algorithmic}
+\Function{NSD}{$a, b$}
+    \While{$b \neq 0$}
+        \State $r \gets a \bmod b$
+        \State $a \gets b$
+        \State $b \gets r$
+    \EndWhile
+    \State \Return $a$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\caption{Výpočet $n$-tého Fibonacciho čísla}
+\begin{algorithmic}
+\Function{Fibonacci}{$n$}
+    \If{$n \leq 1$}
+        \State \Return $n$
+    \EndIf
+    \State $prev \gets 0$
+    \State $curr \gets 1$
+    \For{$i \gets 2$ \textbf{to} $n$}
+        \State $new \gets prev + curr$
+        \State $prev \gets curr$
+        \State $curr \gets new$
+    \EndFor
+    \State \Return $curr$
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Rychlé mocnění}
+\begin{algorithmic}
+\Function{Mocnina}{$x, n$}
+    \If{$n = 0$}
+        \State \Return $1$
+    \ElsIf{$n$ je sudé}
+        \State $y \gets$ \Call{Mocnina}{$x, n/2$}
+        \State \Return $y \times y$
+    \Else
+        \State \Return $x \times$ \Call{Mocnina}{$x, n-1$}
+    \EndIf
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\section*{Růst základních funkcí}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{rccccccc}
+\toprule
+$n$ & $\log_2 n$ & $n$ & $n \log_2 n$ & $n^2$ & $n^3$ & $2^n$ & $n!$ \\
+\midrule
+$10$   & $3.3$ & $10$ & $33$ & $100$ & $1000$ & $1024$ & $3{,}628{,}800$ \\
+$100$  & $6.6$ & $100$ & $660$ & $10^4$ & $10^6$ & $1.27\cdot10^{30}$ & $9.33\cdot10^{157}$ \\
+$10^3$ & $10$ & $10^3$ & $10^4$ & $10^6$ & $10^9$ & $1.07\cdot10^{301}$ & $4.02\cdot10^{2567}$ \\
+$10^4$ & $13$ & $10^4$ & $1.3\cdot10^5$ & $10^8$ & $10^{12}$ & $1.99\cdot10^{3010}$ & $2.85\cdot10^{35659}$ \\
+$10^5$ & $17$ & $10^5$ & $1.7\cdot10^6$ & $10^{10}$ & $10^{15}$ & -- & -- \\
+$10^6$ & $20$ & $10^6$ & $2\cdot10^7$ & $10^{12}$ & $10^{18}$ & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{Přibližné hodnoty základních funkcí.}
+\end{table}
+
+\vspace{1em}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{rccccccc}
+\toprule
+$n$ & $\log_2 n$ & $n$ & $n \log_2 n$ & $n^2$ & $n^3$ & $2^n$ & $n!$ \\
+\midrule
+$10$   & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$ \\
+$100$  & $0$ & $0$ & $0$ & $0$ & $0$ & $1.27\cdot10^{15}$ & $9.33\cdot10^{142}$ \\
+$10^3$ & $0$ & $0$ & $0$ & $0$ & $0$ & $1.07\cdot10^{286}$ & $4.02\cdot10^{2552}$ \\
+$10^4$ & $0$ & $0$ & $0$ & $0$ & $0.001$ & $1.99\cdot10^{2995}$ & $2.85\cdot10^{35644}$ \\
+$10^5$ & $0$ & $0$ & $0$ & $10^{-5}$ & $1$ & -- & -- \\
+$10^6$ & $0$ & $0$ & $0$ & $0.001$ & $1000$ & -- & -- \\
+\bottomrule
+\end{tabular}
+\caption{Doba výpočtu v sekundách na velmi rychlém počítači ($10^{15}$ operací za sekundu).}
+\end{table}
 
 \chapter{O-notace}
 

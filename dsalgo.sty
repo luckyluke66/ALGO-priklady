@@ -51,10 +51,10 @@
   #1
 }
 
-\newtcolorbox{theorem}[1][]{
+\newtcolorbox{proof}[1][]{
   colback=softgreen,
   colframe=softgreenframe,
-  title=\textbf{Věta},
+  title=\textbf{Důkaz},
   fonttitle=\bfseries,
   breakable,
   enhanced,
@@ -111,7 +111,7 @@
 \renewcommand{\contentsname}{Obsah}
 
 
-\newtcolorbox{pseudocodecard}[2][]{
+\newtcolorbox{pseudocodecardblue}[2][]{
   colback=softblue,
   colframe=softblueframe,
   title=\textbf{#2},
@@ -120,9 +120,20 @@
   enhanced,
   arc=3mm,
   boxrule=0.5pt,
-  left=3mm,
-  right=3mm,
-  top=2mm,
-  bottom=2mm,
+  left=3mm, right=3mm, top=2mm, bottom=2mm,
+  #1
+}
+
+% Orange card
+\newtcolorbox{pseudocodecardorange}[2][]{
+  colback=softorange,
+  colframe=softorangeframe,
+  title=\textbf{#2},
+  fonttitle=\bfseries,
+  breakable,
+  enhanced,
+  arc=3mm,
+  boxrule=0.5pt,
+  left=3mm, right=3mm, top=2mm, bottom=2mm,
   #1
 }
