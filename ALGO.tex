@@ -789,9 +789,93 @@ $10^6$ & $0$ & $0$ & $0$ & $0.001$ & $1000$ & -- & -- \\
 \caption{Doba výpočtu v sekundách na velmi rychlém počítači ($10^{15}$ operací za sekundu).}
 \end{table}
 
-\chapter{O-notace}
-
 \chapter{Třídění}
 
+\begin{definition}
+\emph{Problém třídění:}
 
+\textbf{Vstup:} posloupnost n čísel: $\langle a_1, a_2 \dots a_n \rangle$
+
+\textbf{Výstup:} permutace $\langle b_1, b_2 \dots b_n \rangle$ tak, že platí 
+$b_1 \leq b_2 \leq \dots \leq b_n$
+
+vstup i výstup obvykle reprezentujeme polem.
+\end{definition}
+
+\begin{definition}
+
+Algoritmus pracuje \emph{na místě} pokud použije nanejvýš konstantní prostor mimo tříděné pole.  
+
+\end{definition}
+
+
+\section*{Insertion Sort}
+
+Idea tohoto algoritmu je podobná způsobu, jak třídíme \( n \) rozdaných karet:  
+\( n \) karet leží na začátku na stole. Pravou rukou je bereme a vkládáme do levé ruky tak, že v levé ruce vzniká setříděná posloupnost karet (zleva od nejmenší po největší). Drží-li levá ruka \( k \) karet, pak další, \((k + 1)\)-ní, kartu zatřídíme tak, že ji zprava porovnáváme se setříděnými kartami a vložíme ji na správné místo.
+
+\begin{algorithm}[h!]
+\caption{Insertion-Sort(\(A[0..n-1]\))}
+\begin{algorithmic}[1]
+\For{$j \gets 1$ \textbf{to} $n - 1$}
+  \State $t \gets A[j]$
+  \State $i \gets j - 1$
+  \While{$i \ge 0$ \textbf{and} $A[i] > t$}
+    \State $A[i + 1] \gets A[i]$
+    \State $i \gets i - 1$
+  \EndWhile
+  \State $A[i + 1] \gets t$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\section*{Selection Sort}
+
+Idea: Najdi v \( A[0..n-1] \) nejmenší prvek a vyměň ho s \( A[0] \).  
+Najdi v \( A[1..n-1] \) nejmenší prvek a vyměň ho s \( A[1] \).  
+\(\ldots\)  
+Najdi v \( A[n-2..n-1] \) nejmenší prvek a vyměň ho s \( A[n-2] \).
+
+\begin{algorithm}[h!]
+\caption{Selection-Sort(\(A[0..n-1]\))}
+\begin{algorithmic}[1]
+\For{$j \gets 0$ \textbf{to} $n - 2$}
+  \State $iMin \gets j$
+  \For{$i \gets j + 1$ \textbf{to} $n - 1$}
+    \If{$A[i] < A[iMin]$}
+      \State $iMin \gets i$
+    \EndIf
+  \EndFor
+  \State $t \gets A[j]; \; A[j] \gets A[iMin]; \; A[iMin] \gets t$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+
+\section*{Úkoly}
+	\begin{enumerate}
+		\item Nasimulujte si algoritmy selection sort a insertion sort krok po kroku (podle pseudokódu) pro nějaké malé pole 
+		\item Zamyslete se jak budou algoritmy pracovat pro pole, které
+		\item Naprogramujte Insertion sort a selection sort v pythonu. 
+		\item Upravte selection sort tak, aby fungoval výběrem největšího prvku.
+		\item Upravte insertion sort tak, aby třídíl sestupně nebo vzestupně na základě volitelného parametru.
+	\end{enumerate}
 \end{document}
+
+\chapter{O-notace}
+
+
+
+\chapter{Třídění 2}
+
+\section*{Bubble Sort}
+
+\section*{Merge Sort}
+
+\chapter{Třídění pomocí haldy}
+
+\section*{Halda operace}
+
+\section*{Konstrukce haldy}
+
+\section{Heap sort}
