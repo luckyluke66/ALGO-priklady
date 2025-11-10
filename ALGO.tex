@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{book}
+\documentclass[openany,12pt,a4paper]{book}
 
 \usepackage{dsalgo}
 \usepackage[utf8]{inputenc}
@@ -751,7 +751,7 @@ faktoriál & $n!$ & procházení všech permutací \\
 \end{algorithmic}
 \end{algorithm}
 
-\section*{Růst základních funkcí}
+\section{Růst základních funkcí}
 
 \begin{table}[h!]
 \centering
@@ -809,7 +809,7 @@ Algoritmus pracuje \emph{na místě} pokud použije nanejvýš konstantní prost
 \end{definition}
 
 
-\section*{Insertion Sort}
+\section{Insertion Sort}
 
 Idea tohoto algoritmu je podobná způsobu, jak třídíme \( n \) rozdaných karet:  
 \( n \) karet leží na začátku na stole. Pravou rukou je bereme a vkládáme do levé ruky tak, že v levé ruce vzniká setříděná posloupnost karet (zleva od nejmenší po největší). Drží-li levá ruka \( k \) karet, pak další, \((k + 1)\)-ní, kartu zatřídíme tak, že ji zprava porovnáváme se setříděnými kartami a vložíme ji na správné místo.
@@ -829,7 +829,7 @@ Idea tohoto algoritmu je podobná způsobu, jak třídíme \( n \) rozdaných ka
 \end{algorithmic}
 \end{algorithm}
 
-\section*{Selection Sort}
+\section{Selection Sort}
 
 Idea: Najdi v \( A[0..n-1] \) nejmenší prvek a vyměň ho s \( A[0] \).  
 Najdi v \( A[1..n-1] \) nejmenší prvek a vyměň ho s \( A[1] \).  
@@ -852,7 +852,7 @@ Najdi v \( A[n-2..n-1] \) nejmenší prvek a vyměň ho s \( A[n-2] \).
 \end{algorithm}
 
 
-\section*{Úkoly}
+\section{Úkoly}
 	\begin{enumerate}
 		\item Nasimulujte si algoritmy selection sort a insertion sort krok po kroku (podle pseudokódu) pro nějaké malé pole 
 		\item Zamyslete se jak budou algoritmy pracovat pro pole, které je už setřízené.
@@ -862,19 +862,114 @@ Najdi v \( A[n-2..n-1] \) nejmenší prvek a vyměň ho s \( A[n-2] \).
 	\end{enumerate}
 
 
-\chapter{O-notace}
+\chapter{Asymptotický růst funkcí}
+
+V předchožích kapitolách jsme počítaly kolik kroků algoritmus vykoná v nejhorším případě (časová složistos). V této kapitole se budeme věnovat časové složitosti více do hloubky. Zavedeme $O$-notaci.
+Ukážeme jak analyzovat algoritmy efektivněji bez zbytečně velké přesnosti, která nám nedává informaci navíc. 
+Dejme tomu, že algoritmus $A$ a $B$ řeší problém $P$. Spočítáním počtu instrukcí co provedou máme: 
+$T_A(n) = 2n + 4$ a $T_B(n) = 6n - 10$. 
+
+Vidíme, že funkce $T_A(n)$ roste rychleji než $T_B(n)$ rozdíl je ale nezávislý na n.
+Podívejme se tedy na hrubší metodu analýzy, která tento nedostatek odstraní.
+
+\begin{definition}
+\emph{Asymptotická hodní mez $O(g)$} pro funkci $g(n)$ je 
+\[
+O(g(n)) = \{f(n) \ | \ \exists c > 0 \ \text{a} \ n_0 \in \mathbb{N} \text{ tak, že } \forall n \geq n_0 \text{ je } 0 \leq f(n) \leq cg(n))\}
+\]
+\end{definition}
+
+Všimněte, že definujeme množinu funkcí, které splňují podmínku "$f$ funkce je zhora omezená funkcí $g$".
+Pak můžeme říct $n^3 + 2n + 4 \in O(n^3)$. Tedy že funkce$n^3 + 2n + 4$ roste nanejvýš tak rychle jako 
+$c(n^3)$. Bude se nám hodit ještě pár definic. 
+
+\begin{definition}
+\emph{Asymptotická dolní mez $\Omega(g)$} Pro funkci $g(n)$ je
+\[
+\Omega(g(n)) = \{ f(n) \ | \ \exists c > 0,\ n_0 \in \mathbb{N} \forall n \ge n_0 \text{ je } 0 \le c g(n) \le f(n) \}.
+\]
+\end{definition}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{./Images/DolniMez.png}
+    \caption{Znázornění funkce $f(n)$ mezi $c_1 g(n)$ a $c_2 g(n)$.}
+    \label{fig:theta}
+\end{figure}
+
+
+
+\begin{definition}
+\emph{Asymptotická oboustranná (těsná) mez} Pro funkci $g(n)$ je
+\[
+\Theta(g(n)) = \{ f(n) \mid \exists\, c_1, c_2 > 0,\ n_0 \in \mathbb{N} \forall n \ge n_0 \text{ je } 0 \le c_1 g(n) \le f(n) \le c_2 g(n) \}.
+\]
+
+Alternativně platí, že $f(n) \in \Theta(g(n))$ právě když $f(n) \in O(g(n))$ a $f(n) \in \Omega(g(n))$
+\end{definition}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.4\textwidth]{./Images/Onot.png}
+    \caption{Znázornění funkce $f(n)$ mezi $c_1 g(n)$ a $c_2 g(n)$.}
+    \label{fig:theta}
+\end{figure}
+
+
+\section{Vlastnosti}
+
+\begin{pseudocodecardorange}{Tranzitivita odhadů}
+Pokud $f = O(g)$ a $g = O(h)$, pak $f = O(h)$.\\
+Pokud $f = \Omega(g)$ a $g = \Omega(h)$, pak $f = \Omega(h)$.\\
+Pokud $f = \Theta(g)$ a $g = \Theta(h)$, pak $f = \Theta(h)$.\\
+Pokud $f = o(g)$ a $g = o(h)$, pak $f = o(h)$.\\
+Pokud $f = \omega(g)$ a $g = \omega(h)$, pak $f = \omega(h)$.
+\end{pseudocodecardorange}
+
+\begin{pseudocodecardorange}{Reflexitita a symetrie odhadů}
+Reflexivita:\\
+$f = O(f).$\\
+$f = \Omega(f).$\\
+$f = \Theta(f).$\\
+Symetrie:\\
+$f = \Theta(g)$ právě když $g = \Theta(f)$.\\
+$f = O(g)$ právě když $g = \Omega(f)$.\\
+$f = o(g)$ právě když $g = \omega(f)$.\\
+\end{pseudocodecardorange}
+
+
+
+
+\section{Úkoly}
+\begin{enumerate}
+	\item Rozhodněte, zda platí následující: 
+		 \begin{itemize}
+		 	\item $3n^2 + 5n + 1 = \Theta(n^2)$
+		 	\item $2n^3 - 10 = O(n^3)$
+		 	\item $12 \log{n} + 3n = \Theta(n \log n)$
+		 	\item $\frac{n^2 + 4n - 5}{n - 1} = O(n)$
+		 \end{itemize}
+	\item Nechť $f(n)$ a $g(n)$ jsou nezáporné funkce. Pomocí definice $\Theta$ notace ukažte, že platí: $max(f(n), g(n)) = \Theta(f(n) + g(n))$
+	\item Ukažte, že pro každou konstantu $a$ a $b$, kde $b > 0$ platí: $(n + a)^b = \Theta(n^b)$
+	\item Tvrzení "Časová složitost algoritmu A je nejméně $O(n^2)$". Vysvětlete proč takové tvrzení je nesmyslné.
+	\item Dokažte alternativní definici $\Theta$-notace.
+	 
+\end{enumerate}
+
+
+
 
 \chapter{Třídění 2}
 
-\section*{Bubble Sort}
+\section{Bubble Sort}
 
-\section*{Merge Sort}
+\section{Merge Sort}
 
 \chapter{Třídění pomocí haldy}
 
-\section*{Halda operace}
+\section{Halda operace}
 
-\section*{Konstrukce haldy}
+\section{Konstrukce haldy}
 
 \section{Heap sort}
 
