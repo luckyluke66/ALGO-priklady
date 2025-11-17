@@ -881,7 +881,42 @@ O(g(n)) = \{f(n) \ | \ \exists c > 0 \ \text{a} \ n_0 \in \mathbb{N} \text{ tak,
 
 Všimněte, že definujeme množinu funkcí, které splňují podmínku "$f$ funkce je zhora omezená funkcí $g$".
 Pak můžeme říct $n^3 + 2n + 4 \in O(n^3)$. Tedy že funkce$n^3 + 2n + 4$ roste nanejvýš tak rychle jako 
-$c(n^3)$. Bude se nám hodit ještě pár definic. 
+$c(n^3)$. Bude se nám hodit ještě pár definic.
+U časových složitostí se někdy zapisuje $f(n) = O(g(n))$ namísto $f(n) \in O(g(n))$. Význam je ale stejný.
+
+
+\begin{example}
+Dokažme $2n^2 - 4 = O(n^2)$.
+$f(n) = 2n^2 - 4$ a $g(n) = n^2$.
+Podle definice hledáme $C$ a $n_0$
+Zvolme tedy $c = 2$, $n_0 = 2$.
+
+Pro každé $n \ge n_0$ platí $0 \le f(n) \le c g(n)$.
+
+Tato podmínka totiž znamená, že pro každé $n \ge 2$ je 
+$$0 \le 2n^2 - 4 \le 2n^2,$$
+Což zřejmě platí. 
+
+A tedy i $2n^2 - 4 = O(n^2)$ platí.
+\end{example}
+
+\newpage
+\begin{example}
+Dokažme, že neplatí $0.5n^3 = O(20n^2)$.
+
+Je tedy $f(n) = 0.5n^3$ a $g(n) = 20n^2$.
+
+Zvolme libovolné $c > 0$.
+
+Požadovaná nerovnost pak je $0.5n^3 \le 20cn^2$, což je ekvivalentní
+$$0.5n \le 20c, \text{ tj. } n \le 40c.$$
+
+Nerovnost tedy neplatí pro žádné $n \ge 40c$. 
+Neexistuje tedy $n_0$ tak, aby požadovaná nerovnost platila pro každé $n \ge n_0$.
+
+Čísla $c$ a $n_0$ požadovaná definicí tedy neexistují, proto 
+$$0.5n^3 = O(20n^2) \text{ neplatí.}$$
+\end{example}
 
 \begin{definition}
 \emph{Asymptotická dolní mez $\Omega(g)$} Pro funkci $g(n)$ je
@@ -893,12 +928,28 @@ $c(n^3)$. Bude se nám hodit ještě pár definic.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.4\textwidth]{./Images/DolniMez.png}
-    \caption{Znázornění funkce $f(n)$ mezi $c_1 g(n)$ a $c_2 g(n)$.}
+    \caption{Znázornění funkce $f(n)$ zdola omezené $cg(n)$.}
     \label{fig:theta}
 \end{figure}
 
+\begin{exercise}
+1) Dokažme $n^2 = \Omega(2n^2 - 4)$.
+Je tedy $f(n) = n^2$ a $g(n) = 2n^2 - 4$. Zvolme $c = 1/2$ a $n_0 = 1$. 
+Pak pro $n \ge n_0$ platí $cg(n) = n^2 - 2 \le n^2$. Důkaz je hotov.
 
+\medskip
 
+2) Dokažme $2n^2 - 4 = \Omega(n^2)$.
+Je tedy $f(n) = 2n^2 - 4$ a $g(n) = n^2$. Zvolme $c = 1$ a $n_0 = 3$. 
+Pak pro $n \ge n_0$ platí $cg(n) = n^2 \le 2n^2 - 4$. Důkaz je hotov.
+
+\medskip
+
+3) Dokažme, že pro každou funkci $f(n)$ a libovolnou $k > 0$ je
+$f(n) = \Omega(k f(n))$.
+Zvolme $c = 1/k$ a $n_0 = 1$. Podmínky definice pak zřejmě platí.
+
+\end{exercise}
 \begin{definition}
 \emph{Asymptotická oboustranná (těsná) mez} Pro funkci $g(n)$ je
 \[
@@ -962,8 +1013,147 @@ $f = o(g)$ právě když $g = \omega(f)$.\\
 \chapter{Třídění 2}
 
 \section{Bubble Sort}
+\begin{algorithm}
+\caption{Bubble Sort(A)}
+\begin{algorithmic}[1]
+    \For{$j \gets 1$ to $n-1$}
+        \For{$i \gets n - 1$ downto j + 1}
+            \If{$A[i] < A[i - 1]$}
+                \State swap($A[i]$, $A[i - 1]$)
+            \EndIf
+        \EndFor
+    \EndFor
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Quick Sort}
+\emph{Intuice}: namísto řešení složitého problému najednou jej rozdělíme na menší
+(jednodušší) části, které vyřešíme samostatně a jejich výsledky spojíme. Této technice se říká 
+rozděl a panuj. Přímo vybízí k rekurzívní implementaci. 
+\begin{enumerate}
+	\item \textbf{Rozděl}: vstupní pole a rozdělíme na dvě poloviny. Dělící index se nazývá pivot.
+	\item \textbf{Panuj}: rekurzivně volej quicksort na menší části pole. 
+\end{enumerate}
+
+\begin{algorithm}[H]
+\caption{Quick-Sort(A, p, r)}
+\begin{algorithmic}[1]
+\Procedure{Quick-Sort}{A, p, r}
+    \If{$p < r$}
+        \State $q \gets$ \Call{Partition}{A, p, r}
+        \State \Call{Quick-Sort}{A, p, q - 1}
+        \State \Call{Quick-Sort}{A, q + 1, r}
+    \EndIf
+\EndProcedure
+
+\Procedure{Partition}{A, p, r}
+    \State $x \gets A[r]$ \Comment{pivot}
+    \State $i \gets p - 1$
+    \For{$j \gets p$ \textbf{to} $r - 1$}
+        \If{$A[j] \le x$}
+            \State $i \gets i + 1$
+            \State swap($A[i]$, $A[j]$)
+        \EndIf
+    \EndFor
+    \State swap($A[i+1]$, $A[r]$)
+    \State \Return $i + 1$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Složitost quicksortu}
+\section*{Nejhorší případ:}
+\begin{itemize}
+    \item nastává tehdy, když volba pivotu rozdělí pole **nerovnoměrně**
+    \item pivot je vždy **nejmenší nebo největší prvek** v dané části pole
+    \item v takovém případě má jedno podpole délku $n-1$ a druhé délku $0$
+    \item počet instrukcí roste kvadraticky s velikostí pole, což vede na časovou složitost $O(n^2)$
+\end{itemize}
+
+\subsection*{Počty porovnání v partition (nejčastěji vykonávaná instrukce):}
+\begin{enumerate}
+    \item volání: $n-1$ porovnání (všechny prvky s pivotem)
+    \item volání: $n-2$ porovnání
+    \item volání: $n-3$ porovnání
+    \item \dots
+    \item (poslední) $1$ porovnání
+\end{enumerate}
+
+\medskip
+
+\textbf{Celkem:}
+$$ 1 + 2 + 3 + \dots + (n-1) = \frac{n(n-1)}{2} = \Theta(n^2) $$
+
+\section*{Časová složitost v nejlepším a průměrném případě}
+
+\textbf{Intuice:} Quick Sort je velmi efektivní, pokud pivoty nejsou voleny extrémně nevhodně.
+
+\subsection*{Nejlepší případ:}
+\begin{itemize}
+    \item nastává, když pivot rozdělí pole na dvě **přibližně stejně velké** části
+    \item každé rekurzivní volání tedy pracuje s polovinou prvků
+    \item funkce partition provede $O(n)$ operací pro každou úroveň rekurze
+    \item hloubka rekurze je $\log_2 n$, proto dostáváme výslednou složitost $\Theta(n \log n)$
+\end{itemize}
+
+\subsection*{Průměrný případ:}
+\begin{itemize}
+    \item pivoty obvykle nedělí pole zcela rovnoměrně, ale přesto rozdělí pole \glqq dostatečně dobře\grqq
+    \item strom rekurzivních volání má podobnou hloubku jako v nejlepším případě
+    \item proto i složitost v průměrném je lineárně-logaritmická $\Theta(n \log n)$
+\end{itemize}
+
 
 \section{Merge Sort}
+\begin{algorithm}[H]
+\caption{Merge-Sort}
+\begin{algorithmic}[1]
+\Procedure{Merge-Sort}{A, p, r}
+    \If{$p < r$}
+        \State $q \gets \lfloor (p + r)/2 \rfloor$
+        \State \Call{Merge-Sort}{A, p, q}
+        \State \Call{Merge-Sort}{A, q+1, r}
+        \State \Call{Merge}{A, p, q, r}
+    \EndIf
+\EndProcedure
+
+\Procedure{Merge}{A, p, q, r}
+    \State create arrays $L$ and $R$ from $A[p \dots q]$ and $A[q+1 \dots r]$
+    \State append sentinels to $L$ and $R$
+    \State $i \gets 1$; $j \gets 1$
+    \For{$k \gets p$ \textbf{to} $r$}
+        \If{$L[i] \le R[j]$}
+            \State $A[k] \gets L[i]$
+            \State $i \gets i + 1$
+        \Else
+            \State $A[k] \gets R[j]$
+            \State $j \gets j + 1$
+        \EndIf
+    \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\section{Úkoly}
+\begin{enumerate}
+    \item Implementujte Bubble Sort.
+    \item Upravte Bubble tak, aby používal tzv. Cocktail Shaker sort. (známí z přednášky)
+          Tedy každý sudý průchod skenuje zleva doprava a každý lichý zprava doleva.
+    \item Upravte Bubble sort tak, aby měl na vstupu interval $[i, j]$, kde $i$ a $j$ jsou indexy vstupního pole.
+          Algoritmus by pak měl třídit pouze tuto část pole.
+    \item Implementujte Quick Sort.
+    \item Upravte Quick Sort tak, aby používal Hybridní třízení, tedy aby počítal rekurzivní volání a pokud překročí hranici $MaxDepth$,
+          přejde v dané části pole na nějaký jednodužší sort(select, bubble, insert).
+    \item Upravte Quick Sort tak, aby používal 3-cestný partition. Pole rozdělí na 3 části, prvky menší, než pivot, rovny pivotu a větší než pivot. 
+    \item Implementujte Merge Sort.
+    \item Upravte Merge Sort na tzv. $k$-cestný merge sort. Algoritmus na vstupu dostane číslo $k$.
+          Vstupní pole pak bude dělit na $k$ částí.
+          (Vyzkoušejte nejprve pro $k=3$, $k=4$, a poté pro obecné $k$.)
+\end{enumerate}
+	
+
 
 \chapter{Třídění pomocí haldy}
 
