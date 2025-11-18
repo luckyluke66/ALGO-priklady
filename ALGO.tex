@@ -21,9 +21,6 @@
 \maketitle
 \tableofcontents
 
-
-
-
 \chapter{Elementární funkce}
 
 % ---------- Lineární funkce ----------
@@ -37,10 +34,10 @@ f(x) = ax + b, \quad a \neq 0.
 
 \textbf{Vlastnosti:}
 \begin{itemize}
-  \item Definiční obor: $\mathbb{R}$
-  \item Obor hodnot: $\mathbb{R}$
-  \item Monotónnost: rostoucí pro $a>0$, klesající pro $a<0$
-  \item Nemá extrémy, není omezená
+  \item definiční obor: $\mathbb{R}$
+  \item obor hodnot: $\mathbb{R}$
+  \item monotónnost: rostoucí pro $a>0$, klesající pro $a<0$
+  \item nemá extrémy, není omezená
 \end{itemize}
 
 \begin{center}
@@ -66,15 +63,12 @@ f(x) = ax^2 + bx + c, \quad a \neq 0.
 \]
 \end{definition}
 
-\newpage
-
 \textbf{Vlastnosti:}
 \begin{itemize}
-  \item Definiční obor: $\mathbb{R}$
-  \item Obor hodnot: $[0, + \infty )$
-  \item Na intervalu $(- \infty, 0]$ klesající a na $[0, +\infty)$ je rostoucí
-rostoucí.
-  \item Zdola omezená
+  \item definiční obor: $\mathbb{R}$
+  \item obor hodnot (pro $f(x)=x^2$): $\langle 0, +\infty )$
+  \item na intervalu $(-\infty, 0]$ je klesající, na $[0, +\infty)$ rostoucí
+  \item zdola omezená
 \end{itemize}
 
 \begin{center}
@@ -91,30 +85,27 @@ rostoucí.
 \end{tikzpicture}
 \end{center}
 
-Obecně můžeme uvažovat polynomy. Kvadratická i lineární jsou případy polynomické funkce. 
+Obecně můžeme uvažovat polynomy. Kvadratická i lineární funkce jsou speciálními případy polynomických funkcí.
 
-% ---------- Goniometrická funkce ----------
+% ---------- Goniometrické funkce ----------
 \subsection*{Goniometrické funkce}
 \begin{definition}
-Základní goniometrická funkce jsou sinus:
+Základní goniometrické funkce jsou sinus
 \[
-f(x) = \sin x.
+f(x) = \sin x,
 \]
-a cosinus:
-
+a cosinus
 \[
 f(x) = \cos x.
 \]
-
-
 \end{definition}
 
 \textbf{Vlastnosti sinu:}
 \begin{itemize}
-  \item Definiční obor: $\mathbb{R}$
-  \item Obor hodnot: $\langle -1, 1 \rangle$
-  \item Periodická s periodou $2\pi$
-  \item Neklesající ani nerostoucí na celém oboru, ale monotónní po intervalech
+  \item definiční obor: $\mathbb{R}$
+  \item obor hodnot: $\langle -1, 1 \rangle$
+  \item periodická s periodou $2\pi$
+  \item není monotónní na celém oboru, ale je monotónní na dílčích intervalech
 \end{itemize}
 
 \begin{center}
@@ -129,7 +120,7 @@ f(x) = \cos x.
     xticklabels={$-2\pi$,$-\pi$,0,$\pi$,$2\pi$},
     ymin=-1.5, ymax=1.5
   ]
-    \addplot[softorangeframe, thick] {sin(deg(x)};
+    \addplot[softorangeframe, thick] {sin(deg(x))};
   \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -145,9 +136,9 @@ f(x) = a^x, \quad a > 0, \; a \neq 1.
 
 \textbf{Vlastnosti:}
 \begin{itemize}
-  \item Definiční obor: $\mathbb{R}$
-  \item Obor hodnot: $(0, \infty)$
-  \item Monotónnost: rostoucí pro $a>1$, klesající pro $0<a<1$
+  \item definiční obor: $\mathbb{R}$
+  \item obor hodnot: $(0, \infty)$
+  \item monotónnost: rostoucí pro $a>1$, klesající pro $0<a<1$
 \end{itemize}
 
 \begin{center}
@@ -165,6 +156,7 @@ f(x) = a^x, \quad a > 0, \; a \neq 1.
 \end{tikzpicture}
 \end{center}
 
+% ---------- Logaritmická funkce ----------
 \subsection*{Logaritmická funkce}
 \begin{definition}
 Logaritmická funkce je inverzní k exponenciální funkci:
@@ -172,17 +164,15 @@ Logaritmická funkce je inverzní k exponenciální funkci:
 f(x) = \log_a(x), \quad a > 0, \; a \neq 1.
 \]
 
-Platí, že: $a^y = x$ p.k. $\log_a(x) = y$
-
-
+Platí: $a^y = x$ právě tehdy, když $\log_a(x) = y$.
 \end{definition}
 
 \textbf{Vlastnosti:}
 \begin{itemize}
-  \item Definiční Obor: $(0, \infty)$
-  \item Obor hodnot: $\mathbb{R}$
-  \item Monotónnost: Rostoucí
-  \item Nemá extrémy
+  \item definiční obor: $(0, \infty)$
+  \item obor hodnot: $\mathbb{R}$
+  \item monotónnost: rostoucí
+  \item nemá extrémy
 \end{itemize}
 
 \begin{center}
@@ -211,10 +201,10 @@ n! = 1 \cdot 2 \cdot 3 \cdot \dots \cdot n, \quad 0! = 1.
 
 \textbf{Vlastnosti:}
 \begin{itemize}
-  \item Definiční Obor: $\mathbb{N}_0$
-  \item Obor hodnot: $\mathbb{N}$
-  \item Monotónnost: Rostoucí posloupnost
-  \item Není omezený, nemá extrémy
+  \item definiční obor: $\mathbb{N}_0$
+  \item obor hodnot: $\mathbb{N}$
+  \item monotónnost: rostoucí posloupnost
+  \item není omezený, nemá extrémy
 \end{itemize}
 
 \begin{center}
@@ -364,7 +354,6 @@ Pro posloupnost $\{a_n\}$ definujeme:
 		\end{itemize}
 	\item Vypočítejte prvních 5 prvků posloupností daných vzorcem:
 		\begin{itemize}
-			 \item $ a_n = 5 + 3(n - 1)$
 			 \item $ a_n = 2 \cdot 4^{n - 1}$
 			 \item $ a_n = n^2 + 2n + 1$
 			 \item $ a_n = (-2)^n \cdot n$
@@ -373,11 +362,11 @@ Pro posloupnost $\{a_n\}$ definujeme:
 \end{enumerate}
 
 \chapter{Pseudokód}
-Ze slidu Prof. Bělohlávka:
+Ze slidů prof. Bělohlávka:
 
 \section{Náznak definice}
 \begin{definition}
-První přiblížení („definice“):
+První přiblížení („definice“):  
 Algoritmus je posloupnost instrukcí pro řešení problému.
 
 Tato „definice“ je však nepřesná (tedy vlastně ani nejde o přesnou definici):
@@ -394,34 +383,31 @@ Budeme se zabývat zejména algoritmy, které jsou určeny pro počítač (tj. i
 Základní způsoby popisu takových algoritmů jsou:
 
 \begin{itemize}
-  \item \textbf{Přirozeným jazykem.} (popis receptu).
+  \item \textbf{Přirozeným jazykem} (např. popis receptu).
   \begin{itemize}
     \item[\textbf{+}] Snadno srozumitelné i laikům.
-    \item[\textbf{--}] Může být nejednoznačné, zdlouhavé.
+    \item[\textbf{--}] Může být nejednoznačné nebo příliš zdlouhavé.
   \end{itemize}
 
-  \item \textbf{Programovacím jazykem.} Budeme používat jazyk Python (ale je možné použít jakýkoli programovací jazyk).
+  \item \textbf{Programovacím jazykem}. Budeme používat jazyk Python (ale lze použít libovolný jazyk).
   \begin{itemize}
     \item[\textbf{+}] Jednoznačné.
-    \item[\textbf{+}] Vytvořit počítačový program je pak snadné (téměř ho už máme). Rozumí tomu programátoři.
-    \item[\textbf{--}] Obsahuje i zbytečné (nepodstatné) detaily. Dlouhé.
+    \item[\textbf{+}] Snadno lze vytvořit počítačový program.
+    \item[\textbf{--}] Obsahuje i nepodstatné detaily. Často příliš dlouhé.
   \end{itemize}
   
-  \item \textbf{Pseudokódem.} Pseudokód je jazyk blízký programovacímu jazyku, ale je úspornější, protože neobsahuje tolik podrobností. Budeme používat pseudokód z knihy \emph{Cormen et al.: Introduction to Algorithms, 2nd Ed., MIT Press, 2001}.
+  \item \textbf{Pseudokódem}. Pseudokód je jazyk podobný programovacímu jazyku, ale úspornější – neobsahuje zbytečné detaily. Použijeme pseudokód z knihy \emph{Cormen et al.: Introduction to Algorithms, 2nd Ed., MIT Press, 2001}.
   \begin{itemize}
-    \item[\textbf{+}] Je snadno pochopitelný i pro ty, kteří nemají zkušenosti s programováním a programovacími jazyky.  
-    Je vytvořený přímo pro srozumitelný a úsporný popis algoritmů.  
-    Umožňuje snadný přepis do programovacích jazyků.
-    \item[\textbf{--}] Snad jen to, že při implementaci algoritmu je třeba ho přepsat do programovacího jazyka.
+    \item[\textbf{+}] Snadno srozumitelný i pro ty, kteří nemají zkušenost s programováním.  
+    \item[\textbf{+}] Úsporně a přehledně popisuje algoritmy.  
+    \item[\textbf{+}] Umožňuje snadný přepis do programovacích jazyků.
+    \item[\textbf{--}] Je třeba ho převést do konkrétního programovacího jazyka při implementaci.
+  \end{itemize}
 
-  \item \textbf{Dalšími (polo)formálními prostředky.}  
-  Například vývojové diagramy apod.
-\end{itemize}
+  \item \textbf{Dalšími (polo)formálními prostředky}, např. vývojovými diagramy.
 \end{itemize}
 
 \section{Základní prvky pseudokódu (podle Cormen et al.)}
-
-Pseudokód se používá pro vyjádření algoritmů nezávisle na konkrétním programovacím jazyce. Níže jsou základní prvky, které se běžně používají.
 
 \begin{pseudocodecardblue}{Přiřazení}
 \[
@@ -441,7 +427,7 @@ x \gets y
 
 \begin{pseudocodecardblue}{Cyklus \texttt{for}}
 \begin{algorithmic}[1]
-  \For{$i \gets 1 \textbf{ to } n$}
+  \For{$i \gets 1$ \textbf{to} $n$}
     \State příkazy
   \EndFor
 \end{algorithmic}
@@ -465,13 +451,13 @@ x \gets y
 
 \begin{pseudocodecardorange}{Volání funkce}
 \[
-j \gets \textsc{ABOLISH}(capitalism, now)
+y \gets \textsc{Funkce}(x)
 \]
 \end{pseudocodecardorange}
 
 \begin{pseudocodecardblue}{Návratová hodnota}
 \[
-\Return \text{hodnota}
+\Return \ \text{hodnota}
 \]
 \end{pseudocodecardblue}
 
@@ -483,8 +469,8 @@ A[i]
  
 \section{Základní otázky o algoritmech}
 
-\subsection{správnost}
-Vrátí algoritmus správný výsledek pro daný vstup? Řeší tedy algoritmus nějaký problém? 
+\subsection{Správnost}
+Vrátí algoritmus správný výsledek pro každý přípustný vstup?
 
 \begin{algorithm}
 \caption{Algoritmus pro nalezení maxima pole}
@@ -492,111 +478,106 @@ Vrátí algoritmus správný výsledek pro daný vstup? Řeší tedy algoritmus 
 \Require Pole $A$ délky $n$ obsahující celá čísla
 \Ensure Maximální prvek v poli
 \State $max \gets 0$
-\For{$i = 1$ to $n$}
+\For{$i = 1$ to $n-1$}
     \If{$A[i] > max$}
         \State $max \gets A[i]$
     \EndIf
 \EndFor
-\State \Return $max$
+\State \Return max
 \end{algorithmic}
 \end{algorithm}
 
-Co takový algoritmus? Je správný? 
-Pokud chceme ukázat, že algoritmus správný není stačí nám najít vstup pro který algoritmus nenajde správný výstup.Zkusme tedy pole [1, 2, 3] maximum by mělo být 3. Po krokování algoritmu zjistíme, že tomu tak je. 
-Co vstup [-1, -3, -5]? Algoritmus vrátí 0. Nula není největší prvek pole. Dokonce do něj vůbec nepatří.
+Původní verze byla nesprávná, protože počáteční hodnota \texttt{max} byla nastavena na 0.  
+Pro pole se zápornými hodnotami tak algoritmus vracel chybný výsledek.
 
-Musíme si dávat pozor. Často se správnost algoritmu dokazuje. 
-Ukažme snadný důkaz správnosti následujícího algoritmu.
+---
 
 \begin{algorithm}
 \caption{Lineární vyhledávání}
 \begin{algorithmic}[1]
 \Require Pole $A$ délky $n$, hledaná hodnota $x$
-\Ensure Index prvku $x$ nebo NIL, pokud se nenachází
+\Ensure Index prvku $x$ nebo \textsc{NIL}, pokud se nenachází
 \For{$i = 0$ to $n - 1$}
     \If{$A[i] = x$}
         \State \Return $i$
     \EndIf
 \EndFor
-\State \Return NIL
+\State \Return \textsc{NIL}
 \end{algorithmic}
 \end{algorithm}
 
 \begin{proof}
-	Chceme dokázat, že: Algoritmus vrátí správný výsledek a také že vždy skončí.
-	Na začátku každé iterace s indexem i platí:
-	„Prvek x není mezi A[0..i]“
-	
-	Před začátkem cyklu jsme neprohledali žádný prvek. Tedy A[0..0] neobsahuje hledaný prvek $x$.
-	Teď ukažme, že to platí pro i-tou iteraci. 
- 	
- 	Pokud A[i] = x, algoritmus končí a vrátí $i$
- 	
- 	Pokud A[i] != x, tak platí, že po provedení iterace x není v A[0..i].
- 	
- 	For cyklus končí pokud i > n - 1. Tedy i náš algoritmus skončía vrátí NIL , což je správně protože nenašel $x$.
+Chceme dokázat, že algoritmus vrátí správný výsledek a že vždy skončí.
+
+Na začátku každé iterace s indexem $i$ platí indukční předpoklad:  
+„Prvek $x$ není v $A[0\,..\,i-1]$.“
+
+\begin{itemize}
+  \item Pro $i=0$ je tvrzení triviálně pravdivé.
+  \item Pokud algoritmus v iteraci $i$ zjistí, že $A[i] = x$, vrátí správně index.
+  \item Pokud $A[i] \neq x$, je tvrzení splněno i pro další iteraci.
+\end{itemize}
+
+Cyklus skončí po $n$ iteracích. Pokud se $x$ v poli nenachází, algoritmus vrátí \textsc{NIL}, což je správně.
 \end{proof}
 
 \subsection{Složitost}
 
 \begin{itemize}
-	\item časová složitost
-	\item Paměťová složitost
+	\item časová složitost,
+	\item paměťová složitost.
 \end{itemize}
 
 \subsubsection{Časová složitost}
 
-Popisuje jak je algoritmus rychlý. Jak dlouho trvá výpočet od zahájení výpočtu do konce. 
-Popisuje tedy efektivitu algoritmu vzhledem k času jakožto zdroji.
+Popisuje, jak rychle algoritmus pracuje – tedy závislost počtu vykonaných kroků na velikosti vstupu.  
+Tuto závislost můžeme vyjádřit funkcí
+\[
+T: \mathbb{N} \to \mathbb{N},
+\]
+která velikosti vstupu přiřadí počet kroků provedených algoritmem.
 
-Ve skutečnosti nepůjde o rychlost vzhledem k času. 
-Půjde o závislost počtu vykonaných kroků na velikosti vstupu. 
-Přirozeně nás vede k funkci $T: \mathbb{N} \rightarrow \mathbb{N}$
-Ta velikosti vstupu přiřadí počet kroků provedených algoritmem. 
-
-Složitosti se budeme věnovat více v další kapitole. 
-
-
+Složitosti se budeme podrobně věnovat v další kapitole.
 
 \subsection{Optimalita}
-Je náš algoritmus nejlepší možný vzhledem ke složitosti? 
-Neexistuje lepší varianta? 
+Je náš algoritmus nejlepší možný vzhledem ke složitosti?  
+Neexistuje rychlejší varianta?
 
-Podívejme se na algoritmus, který hledá GCD -- nejmenší společný dělitel.
 \begin{algorithm}
-\caption{Největší společný dělitel}
+\caption{Největší společný dělitel — naivní verze}
 \begin{algorithmic}
-\Require celá čísla m, n
-\Ensure Největší společný dělitel čísel m, n
-\While{$m$ mod $t$ $\neq$ 0 or $n$ mod $t$ $\neq$ 0}
+\Require Celá čísla $m, n$
+\Ensure Největší společný dělitel čísel $m, n$
+\State $t \gets \min(m, n)$
+\While{$m \bmod t \neq 0$ \textbf{ or } $n \bmod t \neq 0$}
 	\State $t \gets t - 1$
 \EndWhile
 \State \Return t
 \end{algorithmic}
 \end{algorithm}
 
-Správnost je triviální. Co optimalita? Neexistuje lepší algoritmus? 
-Existuje, říká se mu Eukleidův algoritmus. 
+Správnost je zřejmá, ale algoritmus je velmi pomalý.  
+Existuje mnohem rychlejší varianta – \textbf{Eukleidův algoritmus}.
 
 \section{Úkoly}
 \begin{enumerate}
-	\item Navrhněte v pseudokódu algoritmus který:
+	\item Navrhněte v pseudokódu algoritmus, který:
 		\begin{itemize}
 			\item IN: číslo $x$, OUT: jeho ciferný součet
 			\item IN: číslo $x$, OUT: součet jeho dělitelů
-			\item IN: číslo $x$, OUT: rozhodne jestli je prvočíslem nebo ne
+			\item IN: číslo $x$, OUT: rozhodne, zda je prvočíslem
 			\item IN: číslo $x$, OUT: počet jeho dělitelů
-			\item IN: pole čísel $A$, OUT: pole ve kterém jsou prvky v opačném pořadí
-			\item IN: pole čísel $A$, OUT: nejmenší a největší prvek v poli v jednom průchodu
+			\item IN: pole čísel $A$, OUT: pole s prvky v opačném pořadí
+			\item IN: pole čísel $A$, OUT: nejmenší a největší prvek v jednom průchodu
 			\item IN: pole čísel $A$, OUT: součet všech prvků
-			\item IN: pole čísel $A$, OUT: počet čísel větších než je průměr pole
-			\item IN: pole čísel $A$, OUT: pole $A$ které neobsahuje duplicity
-			\item IN: pole čísel $A$, OUT: pole kde všechny 0 jsou posunuty na konec, jinak je pořadí ponecháno
-			\item IN: pole čísel $A$ a hledané číslo $x$, OUT: index prvního výskytu čísla $x$
-			\item IN: pole čísel $A$ a hledané číslo $x$, OUT: pole indexů, na kterých se nachází číslo $x$
+			\item IN: pole čísel $A$, OUT: počet prvků větších než průměr pole
+			\item IN: pole čísel $A$, OUT: pole $A$ bez duplicit
+			\item IN: pole čísel $A$, OUT: pole, kde jsou všechny nuly přesunuty na konec (bez změny pořadí ostatních prvků)
+			\item IN: pole čísel $A$ a číslo $x$, OUT: index prvního výskytu
+			\item IN: pole čísel $A$ a číslo $x$, OUT: pole všech indexů, kde se nachází
 		\end{itemize}
-		
 \end{enumerate}
+
 
 
 \chapter{Složitost}
@@ -695,7 +676,7 @@ faktoriál & $n!$ & procházení všech permutací \\
     \If{$n = 0$}
         \State \Return $1$
     \Else
-        \State \Return $n \times$ \Call{Faktoriál}{$n - 1$}
+        \State \Return $n \cdot$ \Call{Faktoriál}{$n - 1$}
     \EndIf
 \EndFunction
 \end{algorithmic}
@@ -743,9 +724,9 @@ faktoriál & $n!$ & procházení všech permutací \\
         \State \Return $1$
     \ElsIf{$n$ je sudé}
         \State $y \gets$ \Call{Mocnina}{$x, n/2$}
-        \State \Return $y \times y$
+        \State \Return $y \cdots y$
     \Else
-        \State \Return $x \times$ \Call{Mocnina}{$x, n-1$}
+        \State \Return $x \cdot$ \Call{Mocnina}{$x, n-1$}
     \EndIf
 \EndFunction
 \end{algorithmic}
