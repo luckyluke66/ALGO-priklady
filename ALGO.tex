@@ -13,6 +13,12 @@
 \usepackage[table]{xcolor}
 \usepackage{amsmath}
 
+\algtext*{EndIf}
+\algtext*{EndFor}
+\algtext*{EndProcedure}
+\algtext*{EndWhile}
+
+
 \title{\Huge \textbf{Algoritmizace}\\[0.5cm] \Large Cvičení}
 \author{}
 \date{2025}
@@ -487,10 +493,12 @@ Vrátí algoritmus správný výsledek pro každý přípustný vstup?
 \end{algorithmic}
 \end{algorithm}
 
-Původní verze byla nesprávná, protože počáteční hodnota \texttt{max} byla nastavena na 0.  
-Pro pole se zápornými hodnotami tak algoritmus vracel chybný výsledek.
+Co takový algoritmus? Je správný? 
+Pokud chceme ukázat, že algoritmus správný není stačí nám najít vstup pro který algoritmus nenajde správný výstup.Zkusme tedy pole [1, 2, 3] maximum by mělo být 3. Po krokování algoritmu zjistíme, že tomu tak je. 
+Co vstup [-1, -3, -5]? Algoritmus vrátí 0. Nula není největší prvek pole. Dokonce do něj vůbec nepatří.
 
----
+Musíme si dávat pozor. Často se správnost algoritmu dokazuje aby nešlo rozporovat, že pracuje správně. 
+Ukažme snadný důkaz správnosti následujícího algoritmu.
 
 \begin{algorithm}
 \caption{Lineární vyhledávání}
@@ -1088,6 +1096,17 @@ $$ 1 + 2 + 3 + \dots + (n-1) = \frac{n(n-1)}{2} = \Theta(n^2) $$
 
 
 \section{Merge Sort}
+\emph{Problém}: Máme dvě již setříděné posloupnosti čísel a chceme je sloučit do jedné.
+\emph{Pozorování}:
+protože jsou obě části setříděné, víme, že nejmenší prvek celé dvojice se nachází vždy
+na začátku jedné z nich. Stačí tedy porovnávat pouze první prvky obou posloupností a menší z nich zapsat
+do výsledné.
+
+Tento postup opakujeme, dokud nevyčerpáme jeden z obou vstupů,
+zbytek druhého vstupu je již setříděný, proto jej stačí přepsat do výsledku.
+\emph{Důsledek}:
+celé sloučení lze provést v jediném průchodu oběma poli, tj. v čase úměrném délce většího z nich.
+
 \begin{algorithm}[H]
 \caption{Merge-Sort}
 \begin{algorithmic}[1]
