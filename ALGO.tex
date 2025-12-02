@@ -1157,11 +1157,134 @@ celé sloučení lze provést v jediném průchodu oběma poli, tj. v čase úm�
 
 \chapter{Třídění pomocí haldy}
 
-\section{Halda operace}
+\section{Halda}
+
+Halda je datová struktura. Konkrétně nás zajímá binární halda.
+\begin{definition}
+Halda je Binární strom splňující podmínku
+\begin{itemize}
+	\item pro každý uzel $x$ platí, že hodnota v rodiči $x$ je menší než hodnota v $x$. 
+	pak mluvíme o Min-haldě.
+	\item pro každý uzel $x$ platí, že hodnota v rodiči $x$ je větší, než hodnota v $x$.
+	Tady jde o Max-haldu.
+\end{itemize}
+\end{definition}
+
+Haldu můžeme pohodlně reprezentovat pomocí pole a následujících operací.
+Z indexu $i$ prvku lze snadno určit (spočítat) index $\text{Parent}(i)$ jeho rodiče,
+index $\text{Left}(i)$ jeho levého potomka i index $\text{Right}(i)$ jeho pravého potomka:
+
+\begin{algorithm}[H]
+\caption{Parent$(i)$}
+\begin{algorithmic}[1]
+\State \Return $\left\lfloor \frac{i - 1}{2} \right\rfloor$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Left$(i)$}
+\begin{algorithmic}[1]
+\State \Return $2i + 1$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Right$(i)$}
+\begin{algorithmic}[1]
+\State \Return $2i + 2$
+\end{algorithmic}
+\end{algorithm}
+
+Nyní definice haldy pomocí pole 
+
+\begin{definition}
+Pole $A[0..n-1]$ se nazývá \emph{max-halda}, pokud pro každý  
+$i = 1, \ldots, n-1$ platí, že $A[i] \le A[\text{Parent}(i)]$ (této nerovnosti říkáme
+vlastnost max-haldy).
+A duálně:
+$A[0..n-1]$ se nazývá \emph{min-halda}, pokud pro každý  
+$i = 1, \ldots, n-1$ platí, že $A[i] \ge A[\text{Parent}(i)]$.
+\end{definition}
+
+Pokud budeme dále používat Halda bude tím myšlena Max halda.
+
 
 \section{Konstrukce haldy}
+Předpokládá se, že části pole $A$, které odpovídají stromu s kořenem
+$A[\text{Left}(i)]$ (tj. stromu, jehož kořen je prvek s indexem $\text{Left}(i)$)
+i stromu s kořenem $A[\text{Right}(i)]$ tvoří haldy.
+Cílem je zařadit správně prvek $A[i]$ tak, aby část pole odpovídající stromu
+s kořenem $A[i]$ tvořila haldu.
+
+\begin{algorithm}[H]
+\caption{Max-Heapify$(A, i)$}
+\begin{algorithmic}[1]
+
+\State $l \gets \text{Left}(i)$
+\State $r \gets \text{Right}(i)$
+
+\If{$l \le \text{heap-size}(A)$ \textbf{and} $A[l] > A[i]$}
+    \State $largest \gets l$
+\Else
+    \State $largest \gets i$
+\EndIf
+
+\If{$r \le \text{heap-size}(A)$ \textbf{and} $A[r] > A[largest]$}
+    \State $largest \gets r$
+\EndIf
+
+\If{$largest \ne i$}
+    \State swap$(A[i], A[largest])$
+    \State Max-Heapify$(A, largest)$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+Prvky vstupního pole, které tvoří v odpovídajícím stromu listy,
+tvoří jednoprvkové max-haldy (nemají totiž potomky).  
+To jsou právě prvky $A[\lfloor n/2 \rfloor], \ldots, A[n-1]$
+Build-Max-Heap prochází ostatní prvky od $A[\lfloor n/2 \rfloor - 1]$
+až po $A[0]$ a každý zařadí funkcí Max-Heapify.
+
+\begin{algorithm}[H]
+\caption{Build-Max-Heap$(A[0..n-1])$}
+\begin{algorithmic}[1]
+
+\State $\text{heap-size}(A) \gets n$
+
+\For{$i \gets \lfloor n/2 \rfloor - 1$ \textbf{downto} $0$}
+    \State Max-Heapify$(A, i)$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
 
 \section{Heap sort}
 
+\textbf{Intuice:} V každé iteraci vezmeme z haldy největší prvek a vyměníme jej s prvkem na konci pole.
+Tím porušíme podmínku max haldy, tu pak opravíme pomocí max-heapify.
 
+\begin{algorithm}[H]
+\caption{Heap-sort$(A[0..n-1])$}
+\begin{algorithmic}[1]
+	\State $\text{Build-Max-Heap}(A)$
+	\For{$i \gets n - 1$ \textbf{downto} $1$}
+		\State $\text{swap}(A[0], A[i])$
+		\State $heapsize(A) \gets heapsize(A)-1$
+		\State $\text{Max-Heapify}(A, 0)$
+	\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=16cm]{Images/heapsort1}
+    \includegraphics[width=16cm]{Images/heapsort2}
+\end{figure}
+ 
+\section{Úkoly}
+\begin{enumerate}
+    \item Implementujte Heapsort
+    \item Upravte Heapsort aby na vstupu měl krom pole $A$ i funkci
+    funkce má na vstupu dvě hodnoty stejného typu a vrátí hodnotu typu bool. To bude funkce podle které heapsort třídí. Hlavička funkce by mohla vypadat takto: def sort(a: int, b: int) -> bool: 
+\end{enumerate}    
 \end{document}
