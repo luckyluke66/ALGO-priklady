@@ -245,7 +245,7 @@ Zápis: $(a_n)$ -- posloupnost, $a_n$ -- n-tý prvek.
 		\begin{example}
 			\begin{itemize}
 				\item triviální příklad $1, 2, 3, 4 ... $
-				\item fibbonacci $0, 1, 1, 2, 3, 5, 8 ...$
+				\item Fibonacciho posloupnost $0, 1, 1, 2, 3, 5, 8 ...$
 				\item alternující $1, -1, 1, -1 ...$
 				\item konečná $2, 4, 6, ..., 20$
 			\end{itemize}
@@ -494,10 +494,10 @@ Vrátí algoritmus správný výsledek pro každý přípustný vstup?
 \end{algorithm}
 
 Co takový algoritmus? Je správný? 
-Pokud chceme ukázat, že algoritmus správný není stačí nám najít vstup pro který algoritmus nenajde správný výstup.Zkusme tedy pole [1, 2, 3] maximum by mělo být 3. Po krokování algoritmu zjistíme, že tomu tak je. 
+Pokud chceme ukázat, že algoritmus správný není, stačí nám najít vstup, pro který algoritmus nenajde správný výstup. Zkusme tedy pole [1, 2, 3], maximum by mělo být 3. Po krokování algoritmu zjistíme, že tomu tak je.
 Co vstup [-1, -3, -5]? Algoritmus vrátí 0. Nula není největší prvek pole. Dokonce do něj vůbec nepatří.
 
-Musíme si dávat pozor. Často se správnost algoritmu dokazuje aby nešlo rozporovat, že pracuje správně. 
+Musíme si dávat pozor. Často se správnost algoritmu dokazuje, aby nešlo rozporovat, že pracuje správně.
 Ukažme snadný důkaz správnosti následujícího algoritmu.
 
 \begin{algorithm}
@@ -590,18 +590,18 @@ Existuje mnohem rychlejší varianta – \textbf{Eukleidův algoritmus}.
 
 \chapter{Složitost}
 
-Analýza algoritmu - snažíme se odhadnout jak se algoritmus bude chovat. 
-Pokud mluvíme o složitosti jde nám o to kolik algoritmu zabere času než nám dá výsledek.
+Analýza algoritmu - snažíme se odhadnout, jak se algoritmus bude chovat.
+Pokud mluvíme o složitosti, jde nám o to, kolik algoritmu zabere času, než nám dá výsledek.
 Nebo můžeme uvažovat paměťovou složitost -- kolik paměti algoritmus bude potřebovat na výpočet.
 
-pokud budeme dále mluvit o složitosti algoritmu. Budeme tím myslet časovou, pokud nebude explicitně řečeno jinak. 
+Pokud budeme dále mluvit o složitosti algoritmu, budeme tím myslet časovou, pokud nebude explicitně řečeno jinak.
 
 \begin{definition}
 	\emph{Časová složitost algoritmu} $A$ je funkce $T_A: \mathbb{N} \rightarrow \mathbb{N}$
 	$T_A(n) =$ počet elementárních kroků, které $A$ vykoná pro vstup velikosti n.
 \end{definition}
 
-Funkce $T_A(n)$ popisuje jak se algoritmus chová pro všechny vstupy.
+Funkce $T_A(n)$ popisuje, jak se algoritmus chová pro všechny vstupy.
 Obvykle nás zajímá nejhorší případ, nebo průměrný případ.
 
 
@@ -788,12 +788,12 @@ $10^6$ & $0$ & $0$ & $0$ & $0.001$ & $1000$ & -- & -- \\
 \textbf{Výstup:} permutace $\langle b_1, b_2 \dots b_n \rangle$ tak, že platí 
 $b_1 \leq b_2 \leq \dots \leq b_n$
 
-vstup i výstup obvykle reprezentujeme polem.
+Vstup i výstup obvykle reprezentujeme polem.
 \end{definition}
 
 \begin{definition}
 
-Algoritmus pracuje \emph{na místě} pokud použije nanejvýš konstantní prostor mimo tříděné pole.  
+Algoritmus pracuje \emph{na místě}, pokud použije nanejvýš konstantní prostor mimo tříděné pole.
 
 \end{definition}
 
@@ -844,32 +844,32 @@ Najdi v \( A[n-2..n-1] \) nejmenší prvek a vyměň ho s \( A[n-2] \).
 \section{Úkoly}
 	\begin{enumerate}
 		\item Nasimulujte si algoritmy selection sort a insertion sort krok po kroku (podle pseudokódu) pro nějaké malé pole 
-		\item Zamyslete se jak budou algoritmy pracovat pro pole, které je už setřízené.
-		\item Naprogramujte insertion sort a selection sort v pythonu. 
+		\item Zamyslete se, jak budou algoritmy pracovat pro pole, které je už setříděné.
+		\item Naprogramujte insertion sort a selection sort v Pythonu.
 		\item Upravte selection sort tak, aby fungoval výběrem největšího prvku.
-		\item Upravte insertion sort tak, aby třídíl sestupně nebo vzestupně na základě volitelného parametru.
+		\item Upravte insertion sort tak, aby třídil sestupně nebo vzestupně na základě volitelného parametru.
 	\end{enumerate}
 
 
 \chapter{Asymptotický růst funkcí}
 
-V předchožích kapitolách jsme počítaly kolik kroků algoritmus vykoná v nejhorším případě (časová složistos). V této kapitole se budeme věnovat časové složitosti více do hloubky. Zavedeme $O$-notaci.
-Ukážeme jak analyzovat algoritmy efektivněji bez zbytečně velké přesnosti, která nám nedává informaci navíc. 
-Dejme tomu, že algoritmus $A$ a $B$ řeší problém $P$. Spočítáním počtu instrukcí co provedou máme: 
+V předchožích kapitolách jsme počítali, kolik kroků algoritmus vykoná v nejhorším případě (časová složitost). V této kapitole se budeme věnovat časové složitosti více do hloubky. Zavedeme $O$-notaci.
+Ukážeme, jak analyzovat algoritmy efektivněji bez zbytečně velké přesnosti, která nám nedává informaci navíc.
+Dejme tomu, že algoritmus $A$ a $B$ řeší problém $P$. Spočítáním počtu instrukcí, co provedou, máme:
 $T_A(n) = 2n + 4$ a $T_B(n) = 6n - 10$. 
 
 Vidíme, že funkce $T_A(n)$ roste rychleji než $T_B(n)$ rozdíl je ale nezávislý na n.
 Podívejme se tedy na hrubší metodu analýzy, která tento nedostatek odstraní.
 
 \begin{definition}
-\emph{Asymptotická hodní mez $O(g)$} pro funkci $g(n)$ je 
+\emph{Asymptotická horní mez $O(g)$} pro funkci $g(n)$ je
 \[
 O(g(n)) = \{f(n) \ | \ \exists c > 0 \ \text{a} \ n_0 \in \mathbb{N} \text{ tak, že } \forall n \geq n_0 \text{ je } 0 \leq f(n) \leq cg(n))\}
 \]
 \end{definition}
 
-Všimněte, že definujeme množinu funkcí, které splňují podmínku "$f$ funkce je zhora omezená funkcí $g$".
-Pak můžeme říct $n^3 + 2n + 4 \in O(n^3)$. Tedy že funkce$n^3 + 2n + 4$ roste nanejvýš tak rychle jako 
+Všimněte si, že definujeme množinu funkcí, které splňují podmínku "$f$ funkce je shora omezená funkcí $g$".
+Pak můžeme říct $n^3 + 2n + 4 \in O(n^3)$. Tedy že funkce $n^3 + 2n + 4$ roste nanejvýš tak rychle jako
 $c(n^3)$. Bude se nám hodit ještě pár definic.
 U časových složitostí se někdy zapisuje $f(n) = O(g(n))$ namísto $f(n) \in O(g(n))$. Význam je ale stejný.
 
@@ -884,7 +884,7 @@ Pro každé $n \ge n_0$ platí $0 \le f(n) \le c g(n)$.
 
 Tato podmínka totiž znamená, že pro každé $n \ge 2$ je 
 $$0 \le 2n^2 - 4 \le 2n^2,$$
-Což zřejmě platí. 
+což zřejmě platí.
 
 A tedy i $2n^2 - 4 = O(n^2)$ platí.
 \end{example}
@@ -966,7 +966,7 @@ Pokud $f = o(g)$ a $g = o(h)$, pak $f = o(h)$.\\
 Pokud $f = \omega(g)$ a $g = \omega(h)$, pak $f = \omega(h)$.
 \end{pseudocodecardorange}
 
-\begin{pseudocodecardorange}{Reflexitita a symetrie odhadů}
+\begin{pseudocodecardorange}{Reflexivita a symetrie odhadů}
 Reflexivita:\\
 $f = O(f).$\\
 $f = \Omega(f).$\\
@@ -990,8 +990,8 @@ $f = o(g)$ právě když $g = \omega(f)$.\\
 		 	\item $\frac{n^2 + 4n - 5}{n - 1} = O(n)$
 		 \end{itemize}
 	\item Nechť $f(n)$ a $g(n)$ jsou nezáporné funkce. Pomocí definice $\Theta$ notace ukažte, že platí: $max(f(n), g(n)) = \Theta(f(n) + g(n))$
-	\item Ukažte, že pro každou konstantu $a$ a $b$, kde $b > 0$ platí: $(n + a)^b = \Theta(n^b)$
-	\item Tvrzení "Časová složitost algoritmu A je nejméně $O(n^2)$". Vysvětlete proč takové tvrzení je nesmyslné.
+	\item Ukažte, že pro každou konstantu $a$ a $b$, kde $b > 0$, platí: $(n + a)^b = \Theta(n^b)$
+	\item Tvrzení "Časová složitost algoritmu A je nejméně $O(n^2)$". Vysvětlete, proč takové tvrzení je nesmyslné.
 	\item Dokažte alternativní definici $\Theta$-notace.
 	 
 \end{enumerate}
@@ -1021,7 +1021,7 @@ $f = o(g)$ právě když $g = \omega(f)$.\\
 (jednodušší) části, které vyřešíme samostatně a jejich výsledky spojíme. Této technice se říká 
 rozděl a panuj. Přímo vybízí k rekurzívní implementaci. 
 \begin{enumerate}
-	\item \textbf{Rozděl}: vstupní pole a rozdělíme na dvě poloviny. Dělící index se nazývá pivot.
+	\item \textbf{Rozděl}: vstupní pole rozdělíme na dvě poloviny. Dělicí index se nazývá pivot.
 	\item \textbf{Panuj}: rekurzivně volej quicksort na menší části pole. 
 \end{enumerate}
 
@@ -1091,7 +1091,7 @@ $$ 1 + 2 + 3 + \dots + (n-1) = \frac{n(n-1)}{2} = \Theta(n^2) $$
 \begin{itemize}
     \item pivoty obvykle nedělí pole zcela rovnoměrně, ale přesto rozdělí pole \glqq dostatečně dobře\grqq
     \item strom rekurzivních volání má podobnou hloubku jako v nejlepším případě
-    \item proto i složitost v průměrném je lineárně-logaritmická $\Theta(n \log n)$
+    \item proto i složitost v průměrném případě je lineárně-logaritmická $\Theta(n \log n)$
 \end{itemize}
 
 
@@ -1139,14 +1139,14 @@ celé sloučení lze provést v jediném průchodu oběma poli, tj. v čase úm�
 \section{Úkoly}
 \begin{enumerate}
     \item Implementujte Bubble Sort.
-    \item Upravte Bubble tak, aby používal tzv. Cocktail Shaker sort. (známí z přednášky)
+    \item Upravte Bubble tak, aby používal tzv. Cocktail Shaker sort. (známý z přednášky)
           Tedy každý sudý průchod skenuje zleva doprava a každý lichý zprava doleva.
     \item Upravte Bubble sort tak, aby měl na vstupu interval $[i, j]$, kde $i$ a $j$ jsou indexy vstupního pole.
           Algoritmus by pak měl třídit pouze tuto část pole.
     \item Implementujte Quick Sort.
-    \item Upravte Quick Sort tak, aby používal Hybridní třízení, tedy aby počítal rekurzivní volání a pokud překročí hranici $MaxDepth$,
-          přejde v dané části pole na nějaký jednodužší sort(select, bubble, insert).
-    \item Upravte Quick Sort tak, aby používal 3-cestný partition. Pole rozdělí na 3 části, prvky menší, než pivot, rovny pivotu a větší než pivot. 
+    \item Upravte Quick Sort tak, aby používal hybridní třídění, tedy aby počítal rekurzivní volání a pokud překročí hranici $MaxDepth$,
+          přejde v dané části pole na nějaký jednodušší sort (select, bubble, insert).
+    \item Upravte Quick Sort tak, aby používal 3-cestný partition. Pole rozdělí na 3 části, prvky menší než pivot, rovny pivotu a větší než pivot.
     \item Implementujte Merge Sort.
     \item Upravte Merge Sort na tzv. $k$-cestný merge sort. Algoritmus na vstupu dostane číslo $k$.
           Vstupní pole pak bude dělit na $k$ částí.
@@ -1161,11 +1161,11 @@ celé sloučení lze provést v jediném průchodu oběma poli, tj. v čase úm�
 
 Halda je datová struktura. Konkrétně nás zajímá binární halda.
 \begin{definition}
-Halda je Binární strom splňující podmínku
+Halda je binární strom splňující podmínku
 \begin{itemize}
 	\item pro každý uzel $x$ platí, že hodnota v rodiči $x$ je menší než hodnota v $x$. 
-	pak mluvíme o Min-haldě.
-	\item pro každý uzel $x$ platí, že hodnota v rodiči $x$ je větší, než hodnota v $x$.
+	Pak mluvíme o Min-haldě.
+	\item pro každý uzel $x$ platí, že hodnota v rodiči $x$ je větší než hodnota v $x$.
 	Tady jde o Max-haldu.
 \end{itemize}
 \end{definition}
@@ -1206,7 +1206,7 @@ $A[0..n-1]$ se nazývá \emph{min-halda}, pokud pro každý
 $i = 1, \ldots, n-1$ platí, že $A[i] \ge A[\text{Parent}(i)]$.
 \end{definition}
 
-Pokud budeme dále používat Halda bude tím myšlena Max halda.
+Pokud budeme dále používat pojem halda, bude tím myšlena max-halda.
 
 
 \section{Konstrukce haldy}
@@ -1261,7 +1261,7 @@ až po $A[0]$ a každý zařadí funkcí Max-Heapify.
 \section{Heap sort}
 
 \textbf{Intuice:} V každé iteraci vezmeme z haldy největší prvek a vyměníme jej s prvkem na konci pole.
-Tím porušíme podmínku max haldy, tu pak opravíme pomocí max-heapify.
+Tím porušíme podmínku max-haldy, tu pak opravíme pomocí max-heapify.
 
 \begin{algorithm}[H]
 \caption{Heap-sort$(A[0..n-1])$}
@@ -1284,7 +1284,7 @@ Tím porušíme podmínku max haldy, tu pak opravíme pomocí max-heapify.
 \section{Úkoly}
 \begin{enumerate}
     \item Implementujte Heapsort
-    \item Upravte Heapsort aby na vstupu měl krom pole $A$ i funkci
-    funkce má na vstupu dvě hodnoty stejného typu a vrátí hodnotu typu bool. To bude funkce podle které heapsort třídí. Hlavička funkce by mohla vypadat takto: def sort(a: int, b: int) -> bool: 
+    \item Upravte Heapsort, aby na vstupu měl krom pole $A$ i funkci.
+    Funkce má na vstupu dvě hodnoty stejného typu a vrátí hodnotu typu bool. To bude funkce, podle které heapsort třídí. Hlavička funkce by mohla vypadat takto: def sort(a: int, b: int) -> bool:
 \end{enumerate}    
 \end{document}
